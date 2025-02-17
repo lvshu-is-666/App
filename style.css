@@ -99,6 +99,34 @@ body::before {
     opacity: 0.8;
 }
 
+.theme-toggle {
+            margin-left: auto;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--current-text);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(127, 127, 127, 0.1);
+        }
+
+        .theme-toggle::before {
+            content: '☀️';
+            transition: transform 0.3s ease;
+        }
+
+        .dark-mode .theme-toggle::before {
+            content: '🌙';
+            transform: rotate(180deg);
+        }
+
 /* ========== 主容器 ========== */
 .container {
     max-width: 1200px;
