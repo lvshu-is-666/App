@@ -9,6 +9,7 @@
     --shadow-primary: 0 4px 20px rgba(46, 204, 113, 0.15);
     --shadow-card: 0 8px 24px rgba(46, 204, 113, 0.1);
     --border-radius: 24px;
+    color-scheme: light dark;
 }
 
 /* ========== 基础样式 ========== */
@@ -29,6 +30,7 @@ body {
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
+    color-scheme: light dark;
 }
 
 /* ========== 动态背景层 ========== */
