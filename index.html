@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绿树应用中心</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="icon" href="logo.ico" />
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="gradient-navbar">
+        <div class="container">
+            <h1>绿树应用中心</h1>
+            <!-- 可选导航菜单 -->
+            <div class="nav-menu">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="gradient-background">
+        <div class="container">
+            <div id="app-list" class="app-grid"></div>
+            <div id="app-detail-container" style="display: none;">
+                <button class="gradient-back-btn" onclick="showList()">← 返回列表</button>
+                <div id="app-detail"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 调试用初始化提示
+        console.log("初始化开始...");
+        
+        const apps = [
+    {
+        id: 1,
+        name: "Lvshu OS",
+        brief: "高效的lvshu操作系统",  // 新增简短描述
+        version: "7.0.3",
+        download: "apps/Lvshu OS.exe",
+        icon: "icon/Lvshu OS.png",
+        detail: "details/Lvshu OS.md",      // 详细描述文件
+        changelog: "md/Lvshu OS.md"         // 更新日志文件
+    },
+    {
+        id: 2,
+        name: "绿树云存储",
+        brief: "高效的企业级办公解决方案",  // 新增简短描述
+        version: "1.4.3",
+        download: "#",
+        icon: "icon/cloud.png",
+        description: "details/cloud.md",  // 改为Markdown文件路径
+        changelog: "md/cloud.md"
+    }
+];
+
+        // 增强的错误处理
+        function initAppList() {
+            try {
+                console.log("正在初始化应用列表...");
+                const container = document.getElementById('app-list');
+                if (!container) throw new Error('找不到列表容器元素');
+
+    container.innerHTML = apps.map(app => `
+        <div class="app-card" onclick="showDetail(${app.id})">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <div class="app-card-content">
+                <h2>${app.name}</h2>
+                <p class="app-brief">${app.brief}</p>  <!-- 显示简短描述 -->
+                <small>当前版本: ${app.version}</small>
+            </div>
+        </div>
+    `).join('');
+                
+                console.log("应用列表初始化完成");
+            } catch (error) {
+                console.error("初始化失败:", error);
+                document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
+            }
+        }
+
+async function showDetail(appId) {
+    const app = apps.find(a => a.id === appId);
+    const container = document.getElementById('app-detail');
+    
+    container.innerHTML = `
+    <div class="app-detail">
+        <div class="detail-container">
+            <!-- 左侧内容区 -->
+            <div class="detail-main">
+                <h1>${app.name}</h1>
+                
+                <div class="description-container">
+                    <div class="loading-description">加载详细内容中...</div>
+                    <div id="description-content"></div>
+                </div>
+
+                <div class="changelog-container">
+                    <h2>更新日志</h2>
+                    <div class="loading-changelog">加载更新日志中...</div>
+                    <div id="changelog-content"></div>
+                </div>
+            </div>
+
+            <!-- 右侧侧边栏 -->
+            <div class="detail-sidebar">
+                <img src="${app.icon}" 
+                     class="detail-icon" 
+                     alt="${app.name}图标">
+                <button class="download-btn" 
+                        onclick="location.href='${app.download}'">
+                    下载 v${app.version}
+                </button>
+            </div>
+        </div>
+    </div>`;
+
+    try {
+        // 并行加载两个Markdown文件
+        const [descResponse, changelogResponse] = await Promise.all([
+            fetch(app.description),
+            fetch(app.changelog)
+        ]);
+
+        if (!descResponse.ok || !changelogResponse.ok) {
+            throw new Error('文件加载失败');
+        }
+
+        const [descMD, changelogMD] = await Promise.all([
+            descResponse.text(),
+            changelogResponse.text()
+        ]);
+
+        // 渲染应用介绍
+        document.getElementById('description-content').innerHTML = marked.parse(descMD);
+        document.querySelector('.loading-description').style.display = 'none';
+        document.getElementById('description-content').style.display = 'block';
+
+        // 渲染更新日志
+        document.getElementById('changelog-content').innerHTML = marked.parse(changelogMD);
+        document.querySelector('.loading-changelog').style.display = 'none';
+        document.getElementById('changelog-content').style.display = 'block';
+
+    } catch (error) {
+        document.querySelector('.loading-description').innerHTML = 
+            `<div class="error">内容加载失败：${error.message}</div>`;
+        document.querySelector('.loading-changelog').innerHTML = 
+            `<div class="error">日志加载失败：${error.message}</div>`;
+    }
+
+    document.getElementById('app-list').style.display = 'none';
+    document.getElementById('app-detail-container').style.display = 'block';
+}
+
+        // 显示列表
+        function showList() {
+            document.getElementById('app-list').style.display = 'grid';
+            document.getElementById('app-detail-container').style.display = 'none';
+        }
+
+        // 启动初始化
+        window.onload = initAppList;
+        console.log("脚本加载完成");
+    </script>
+</body>
+</html>
