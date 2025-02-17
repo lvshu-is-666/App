@@ -18,6 +18,7 @@
                 <a href="https://lvshu-is-666.github.io/App/" class="nav-link">首页</a>
                 <a href="https://lvshu-is-666.github.io/App/about" class="nav-link">关于</a>
             </div>
+            <button class="theme-toggle" onclick="toggleTheme()"></button>
         </div>
     </nav>
 
@@ -32,6 +33,23 @@
         </div>
     </main>
 
+<script>
+        // 主题切换逻辑
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // 初始化主题
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 
+                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        }
+
+        initTheme();
+    </script>
+    
     <script>
         // 调试用初始化提示
         console.log("初始化开始...");
