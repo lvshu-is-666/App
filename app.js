@@ -110,18 +110,18 @@ function initAppList() {
     }
 }
 
+// 创建Markdown内容加载器
+async function loadFile(file) {
+    const response = await fetch(file);
+    if (!response.ok) throw new Error('文件加载失败');
+    return await response.text();
+}
+
 async function showDetail(appId) {
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
 
     document.querySelector('.search-container').style.display = 'none';
-    
-    // 创建Markdown内容加载器
-    async function loadFile(file) {
-        const response = await fetch(file);
-        if (!response.ok) throw new Error('文件加载失败');
-        return await response.text();
-    }
 
     container.innerHTML = `
     <div class="app-detail">
@@ -176,6 +176,10 @@ async function showDetail(appId) {
         document.querySelector('.loading-changelog').style.display = 'none';
         document.getElementById('changelog-content').style.display = 'block';
 
+        // 初始化 highlight.js
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
     } catch (error) {
         document.querySelector('.loading-description').innerHTML = 
             `<div class="error">内容加载失败：${error.message}</div>`;
@@ -185,6 +189,15 @@ async function showDetail(appId) {
 
     document.getElementById('app-list').style.display = 'none';
     document.getElementById('app-detail-container').style.display = 'block';
+
+    // 初始化图片加载占位符
+    document.querySelectorAll('.markdown-content img').forEach(img => {
+        img.classList.add('loading');
+        img.addEventListener('load', () => {
+            img.classList.remove('loading');
+        });
+    });
+}
 }
 
 // 复制分享链接
