@@ -47,27 +47,27 @@
         console.log("初始化开始...");
         
         const apps = [
-    {
-        id: 1,
-        name: "Lvshu OS",
-        brief: "高效的lvshu操作系统",  // 新增简短描述
-        version: "7.0.3",
-        download: "apps/Lvshu OS.exe",
-        icon: "icon/Lvshu OS.png",
-        detail: "details/Lvshu OS.md",      // 详细描述文件
-        changelog: "log/Lvshu OS.md"         // 更新日志文件
-    },
-    {
-        id: 2,
-        name: "绿树云存储",
-        brief: "高效的企业级办公解决方案",  // 新增简短描述
-        version: "1.4.3",
-        download: "#",
-        icon: "icon/cloud.png",
-        description: "details/cloud.md",  // 改为Markdown文件路径
-        changelog: "log/cloud.md"
-    }
-];
+            {
+                id: 1,
+                name: "Lvshu OS",
+                brief: "高效的lvshu操作系统",  // 新增简短描述
+                version: "7.0.3",
+                download: "apps/Lvshu OS.exe",
+                icon: "icon/Lvshu OS.png",
+                detail: "details/Lvshu OS.md",      // 详细描述文件
+                changelog: "log/Lvshu OS.md"         // 更新日志文件
+            },
+            {
+                id: 2,
+                name: "绿树云存储",
+                brief: "高效的企业级办公解决方案",  // 新增简短描述
+                version: "1.4.3",
+                download: "#",
+                icon: "icon/cloud.png",
+                description: "details/cloud.md",  // 改为Markdown文件路径
+                changelog: "log/cloud.md"
+            }
+        ];
 
         // 增强的错误处理
         function initAppList() {
@@ -98,6 +98,23 @@
             }
         }
 
+        function parseUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const appId = params.get('appId');
+    
+    if (appId) {
+        showDetail(parseInt(appId));
+        document.getElementById('app-list').style.display = 'none';
+        document.getElementById('app-detail-container').style.display = 'block';
+    }
+}
+
+window.onload = () => {
+    initAppList();
+    initTheme(); // 初始化主题
+    parseUrlParams(); // 解析 URL 参数
+};
+
 async function showDetail(appId) {
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
@@ -117,7 +134,10 @@ async function showDetail(appId) {
             <!-- 左侧内容区 -->
             <div class="detail-main">
                         <h1>${app.name}</h1>
-                        
+                        <!-- 分享按钮 -->
+                <div class="share-container">
+                    <button class="share-btn" onclick="copyShareLink(${app.id})">分享</button>
+                </div>
                             <div class="description-container">
                                 <div class="loading-description">加载详细内容中...</div>
                                 <div id="description-content"></div>
