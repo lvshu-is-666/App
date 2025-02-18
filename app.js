@@ -54,7 +54,7 @@ const apps = [
     {
         id: 2002,
         name: "文心一言",
-        brief: "文心一言，你的智能伙伴\r\n有用、有趣、有温度",
+        brief: "文心一言，你的智能伙伴<br>有用、有趣、有温度",
         version: "3.5 / 4.0",
         download: "https://yiyan.baidu.com/",
         icon: "icon/文心一言.png",
