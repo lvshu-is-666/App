@@ -230,7 +230,7 @@ function showList() {
 
 // 启动初始化
  window.onload = () => {
-         // 获取 canvas 元素和上下文
+    // 获取 canvas 元素和上下文
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -240,20 +240,36 @@ function showList() {
 
     // 粒子类
     class Particle {
-        constructor(x, y, color) {
-            this.x = x;
-            this.y = y;
-            this.color = color;
-            this.size = Math.random() * 2 + 10; // 粒子大小
-            this.speedX = (Math.random() - 0.5) * 2;
-            this.speedY = (Math.random() - 0.5) * 2;
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 2; // 粒子大小
+            this.speedX = (Math.random() - 0.5) * 3;
+            this.speedY = (Math.random() - 0.5) * 3;
+            this.color = getRandomColor(); // 随机颜色
+            this.shape = getRandomShape();  // 随机形状
         }
 
         draw() {
             ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
+            switch (this.shape) {
+                case 'circle':
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    break;
+                case 'square':
+                    ctx.fillRect(this.x, this.y, this.size * 2, this.size * 2);
+                    break;
+                case 'triangle':
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y - this.size);
+                    ctx.lineTo(this.x + this.size, this.y + this.size);
+                    ctx.lineTo(this.x - this.size, this.y + this.size);
+                    ctx.closePath();
+                    ctx.fill();
+                    break;
+            }
         }
 
         update() {
@@ -268,27 +284,25 @@ function showList() {
         }
     }
 
-    // 创建粒子数组
-    const particles = [];
-
-    // 初始化粒子
-    function initParticles() {
-        const numParticles = 25; // 粒子数量
-        for (let i = 0; i < numParticles; i++) {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const color = getRandomGradientColor();
-            particles.push(new Particle(x, y, color));
-        }
+    // 获取随机颜色
+    function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        const a = Math.random(); // 透明度
+        return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
 
-    // 获取随机渐变颜色
-    function getRandomGradientColor() {
-        const gradients = [
-            '#6c63ff', '#f06292', '#4caf50', '#ffeb3b', '#00bcd4',
-            '#9c27b0', '#ff5722', '#009688', '#3f51b5', '#2196f3'
-        ];
-        return gradients[Math.floor(Math.random() * gradients.length)];
+    // 获取随机形状
+    function getRandomShape() {
+        const shapes = ['circle', 'square', 'triangle'];
+        return shapes[Math.floor(Math.random() * shapes.length)];
+    }
+
+    // 创建粒子数组
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+        particles.push(new Particle());
     }
 
     // 动画函数
@@ -307,8 +321,7 @@ function showList() {
         canvas.height = window.innerHeight;
     });
 
-    // 初始化粒子并启动动画
-    initParticles();
+    // 启动动画
     animate();
      
     initAppList();
