@@ -243,9 +243,9 @@ function showList() {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 5; // 粒子大小
-            this.speedX = (Math.random() - 0.5) * 2;
-            this.speedY = (Math.random() - 0.5) * 2;
+            this.size = Math.random() * 3 + 6; // 粒子大小
+            this.speedX = (Math.random() - 0.5) * 3;
+            this.speedY = (Math.random() - 0.5) * 3;
             this.color = getRandomColor(); // 随机颜色
             this.shape = getRandomShape();  // 随机形状
         }
@@ -289,7 +289,7 @@ function showList() {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
         const b = Math.floor(Math.random() * 256);
-        const a = Math.random(); // 透明度
+        const a = 0.4 + Math.random()*0.6; // 透明度
         return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
 
@@ -301,7 +301,7 @@ function showList() {
 
     // 创建粒子数组
     const particles = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 40; i++) {
         particles.push(new Particle());
     }
 
