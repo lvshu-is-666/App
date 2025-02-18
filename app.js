@@ -1,14 +1,3 @@
-this.answer = marked(res.data)
-//封装成一个指令,highlight是指令的名称
-Vue.directive('highlight', (el) => {
-  let blocks = el.querySelectorAll('pre code')
-  blocks.forEach((block) => {
-    // 创建ol标签元素
-    let ol = document.createElement("ol");
-    block.parentNode.appendChild(ol);
-    
-    hljs.highlightBlock(block)
-  })
 // 调试用初始化提示
 console.log("初始化开始...");
 
@@ -206,10 +195,13 @@ function showList() {
 }
 
 // 启动初始化
-window.onload = () => {
+ window.onload = () => {
     initAppList();
     initTheme(); // 初始化主题
     parseUrlParams(); // 初始化时解析 URL 参数
+    document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+    });
 };
 
 // 添加搜索功能
