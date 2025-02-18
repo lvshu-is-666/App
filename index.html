@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://fastly.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <link rel="icon" href="logo.ico" />
 </head>
 <body>
@@ -44,6 +46,21 @@
     </main>
 
     <script>
+        import { marked } from 'marked';
+        import hljs from 'highlight.js';
+        // 引入代码高亮样式
+        import 'highlight.js/styles/darcula.css';
+        this.answer = marked(res.data)
+        //封装成一个指令,highlight是指令的名称
+        Vue.directive('highlight', (el) => {
+          let blocks = el.querySelectorAll('pre code')
+          blocks.forEach((block) => {
+            // 创建ol标签元素
+            let ol = document.createElement("ol");
+            block.parentNode.appendChild(ol);
+        
+            hljs.highlightBlock(block)
+        })
         // 调试用初始化提示
         console.log("初始化开始...");
         
