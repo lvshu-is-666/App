@@ -42,7 +42,7 @@
     --gradient-primary: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
     --gradient-secondary: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
     --gradient-bg: linear-gradient(150deg, #ccffda 0%, #e6ffee 100%);
-    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(240,255,244,0.8) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.8) 0%, rgba(240,255,244,0.75) 100%);
     --gradient-text: linear-gradient(135deg, #1a5632 0%, #2c3e50 100%);
     --shadow-primary: 0 4px 20px rgba(46, 204, 113, 0.15);
     --shadow-card: 0 8px 24px rgba(46, 204, 113, 0.1);
@@ -53,7 +53,7 @@
     --gradient-primary: linear-gradient(135deg, #0e5128 0%, #125029 100%);
     --gradient-secondary: linear-gradient(135deg, #184868 0%, #103a56 100%);
     --gradient-bg: linear-gradient(150deg, #0b2914 0%, #03270e 100%);
-    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.15) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.13) 100%);
     --primary-text: #fff;
     --secondary-text: #aaa;
     --card-bg: rgba(255,255,255,0.25);
