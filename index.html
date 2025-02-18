@@ -43,6 +43,23 @@
     </main>
 
     <script>
+
+        function parseUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const appId = params.get('appId');
+    
+    if (appId) {
+        showDetail(parseInt(appId));
+        document.getElementById('app-list').style.display = 'none';
+        document.getElementById('app-detail-container').style.display = 'block';
+    }
+}
+
+window.onload = () => {
+    initAppList();
+    initTheme(); // 初始化主题
+    parseUrlParams(); // 解析 URL 参数
+};
         // 调试用初始化提示
         console.log("初始化开始...");
         
@@ -97,23 +114,6 @@
                 document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
             }
         }
-
-        function parseUrlParams() {
-    const params = new URLSearchParams(window.location.search);
-    const appId = params.get('appId');
-    
-    if (appId) {
-        showDetail(parseInt(appId));
-        document.getElementById('app-list').style.display = 'none';
-        document.getElementById('app-detail-container').style.display = 'block';
-    }
-}
-
-window.onload = () => {
-    initAppList();
-    initTheme(); // 初始化主题
-    parseUrlParams(); // 解析 URL 参数
-};
 
 async function showDetail(appId) {
     const app = apps.find(a => a.id === appId);
