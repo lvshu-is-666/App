@@ -302,12 +302,7 @@ function showList() {
     // 创建粒子数组
     const particles = [];
     for (let i = 0; i < 40; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            speedX: (Math.random() - 0.5) * 2,
-            speedY: (Math.random() - 0.5) * 2,
-        });
+        particles.push(new Particle());
     }
 
     // 动画函数
