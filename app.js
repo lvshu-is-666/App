@@ -160,6 +160,9 @@ async function showDetail(appId) {
         </div>
     </div>`;
 
+    // 确保 detail-main 的内容不会超出容器
+    document.querySelector('.detail-main').style.overflow = 'auto';
+
     try {
         const [descMD, changelogMD] = await Promise.all([
             loadFile(app.description || app.detail),
