@@ -367,12 +367,12 @@ body::before {
 }
 
 /* ========== Markdown内容样式 ========== */
-.markdown-content {
+.markdown-container .markdown-content {
     color: var(--primary-text);
     line-height: 1.8;
 }
 
-.markdown-content h2 {
+.markdown-container .markdown-content h2 {
     background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
@@ -382,18 +382,18 @@ body::before {
     border-bottom: 2px solid #eee;
 }
 
-.markdown-content ul {
+.markdown-container .markdown-content ul {
     padding-left: 2rem;
     margin: 1rem 0;
     list-style-type: '➤';
 }
 
-.markdown-content li {
+.markdown-container .markdown-content li {
     margin: 0.8rem 0;
     padding-left: 0.8rem;
 }
 
-.markdown-content code {
+.markdown-container .markdown-content code {
     background: var(--gradient-card);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
