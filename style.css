@@ -207,8 +207,8 @@ body::before {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-card);
@@ -218,7 +218,7 @@ body::before {
 
 :root[style*="--current-theme: dark"] .container {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
