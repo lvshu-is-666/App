@@ -302,7 +302,12 @@ function showList() {
     // 创建粒子数组
     const particles = [];
     for (let i = 0; i < 40; i++) {
-        particles.push(new Particle());
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            speedX: (Math.random() - 0.5) * 2,
+            speedY: (Math.random() - 0.5) * 2,
+        });
     }
 
     // 动画函数
@@ -319,7 +324,7 @@ function showList() {
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    });
+    }, { passive: true });
 
     // 启动动画
     animate();
