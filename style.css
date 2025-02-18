@@ -405,12 +405,46 @@ body::before {
     transform: scale(1.02);
 }
 
-/* ========== Markdown内容样式 ========== */
+/* ============== Markdown 内容样式 ================= */
 .markdown-content {
     color: var(--primary-text);
     line-height: 1.8;
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+/* 图片自适应 */
+.markdown-content img {
+    max-width: 100%;   /* 确保图片不会超出容器宽度 */
+    height: auto;      /* 维持图片的纵横比 */
+    display: block;    /* 改善图片在容器中的布局 */
+    margin: 1rem auto;  /* 上下外边距为1rem，左右自动居中 */
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.95); /* 图片加载前的背景 */
+}
+
+/* 图片加载前的占位符 */
+.markdown-content img.loading {
+    background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(200,200,200,0.5));
+}
+
+/* 代码块样式 */
+.markdown-content pre {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background: var(--dark-card-bg);
+    border-radius: 8px;
+    position: relative;
+}
+
+.markdown-content pre code {
+    color: var(--primary-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .markdown-content h2 {
