@@ -6,7 +6,7 @@
     <title>绿树应用中心</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://fastly.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" href="logo.ico" />
 </head>
 <body>
@@ -37,7 +37,7 @@
 
             <div id="app-list" class="app-grid"></div>
             <div id="app-detail-container" style="display: none;">
-                <button class="gradient-back-btn" onclick="showList()">← 返回列表</button>
+                <button class="gradient-back-btn" onclick="showList()"><i class="fa-solid fa-arrow-left"></i>返回列表</button>
                 <div id="app-detail"></div>
             </div>
         </div>
@@ -183,7 +183,7 @@ async function showDetail(appId) {
                      alt="${app.name}图标">
                 <button class="download-btn" 
                         onclick="location.href='${app.download}'">
-                    下载 ${app.version} 版本
+                    <i class="fa-solid fa-download"></i> 下载 ${app.version} 版本
                 </button>
             </div>
         </div>
