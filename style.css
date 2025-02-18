@@ -328,25 +328,22 @@ body::before {
 
 /* detail-sidebar 样式 */
 .detail-sidebar {
-    position: fixed; /* 固定位置 */
-    top: 50%; /* 页面垂直居中 */
-    transform: translateY(-50%);
-    right: 20px; /* 距离页面右侧的位置 */
-    background: transparent; /* 去除背景 */
-    padding: 0;
-    z-index: 1000; /* 确保浮在页面上方 */
+    position: sticky;
+    top: 50%;
+    height: fit-content;
+    text-align: center;
 }
 
 /* 详情页图标和按钮 */
 .detail-icon {
-    width: 120px; /* 调整大小 */
-    height: 120px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     border-radius: var(--border-radius);
-    background: linear-gradient(135deg, #e6ffee 0%, #ccffda 100%);
-    padding: 5px;
+    margin-bottom: 1.5rem;
     box-shadow: var(--shadow-card);
-    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #e6ffee 0%, #ccffda 100%);
+    padding: 15px;
 }
 
 .validated-modified {
@@ -382,7 +379,7 @@ body::before {
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 15px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     transition: all 0.3s ease;
     width: 100%;
