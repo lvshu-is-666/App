@@ -319,7 +319,7 @@ function showList() {
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    }, { passive: true });
+    });
 
     // 启动动画
     animate();
