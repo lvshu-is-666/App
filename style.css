@@ -302,31 +302,11 @@ body::before {
     box-shadow: var(--shadow-card);
 }
 
-/* ========== 新添加的 Markdown 容器样式 ========== */
-/*.markdown-container {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-card);
-    margin-bottom: 3rem;
-}
-
-.markdown-container h2 {
-    margin-top: 0;
-}
-
-.markdown-container > div {
-    margin-bottom: 2rem;
-}
-*/
-
 /* ========== 隐藏不必要的加载图标 ========== */
-/*.detail-container .loading-description,
+.detail-container .loading-description,
 .detail-container .loading-changelog {
     display: none;
 }
-*/
 
 /* ========== 下载按钮 ========== */
 .download-btn {
