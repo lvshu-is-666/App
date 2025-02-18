@@ -303,7 +303,7 @@ body::before {
 }
 
 /* ========== 新添加的 Markdown 容器样式 ========== */
-.markdown-container {
+/*.markdown-container {
     margin-top: 2rem;
     padding: 1.5rem;
     border-radius: var(--border-radius);
@@ -325,6 +325,7 @@ body::before {
 .detail-container .loading-changelog {
     display: none;
 }
+*/
 
 /* ========== 下载按钮 ========== */
 .download-btn {
@@ -368,14 +369,14 @@ body::before {
 }
 
 /* ========== Markdown内容样式 ========== */
-.markdown-container .markdown-content {
+.markdown-content {
     color: var(--primary-text);
     line-height: 1.8;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.markdown-container .markdown-content h2 {
+.markdown-content h2 {
     background: var(--gradient-text);
     -webkit-background-clip: text;
     background-clip: text;
@@ -393,16 +394,16 @@ body::before {
     list-style-type: '➤';
 }
 
-.markdown-container .markdown-content li {
+.markdown-content li {
     margin: 0.8rem 0;
     padding-left: 2rem !important;
 }
 
-.markdown-container .markdown-content p {
+.markdown-content p {
     margin: 1rem 0;
 }
 
-.markdown-container .markdown-content code {
+.markdown-content code {
     background: var(--gradient-card);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
