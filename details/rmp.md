@@ -28,19 +28,19 @@ Rail Map Painter is an open-source React project aimed at making the process of 
 
 Note all images are generated via the interactive web application where you can move, add, change, delete any stations and lines!
 
-![shanghai](docs/imgs/shanghai.png)
+![shanghai](https://raw.githubusercontent.com/railmapgen/rmp/refs/heads/main/docs/imgs/shanghai.png)
 
 > Shanghai
 
-![guangzhou](docs/imgs/guangzhou.png)
+![guangzhou](https://raw.githubusercontent.com/railmapgen/rmp/refs/heads/main/docs/imgs/guangzhou.png)
 
 > Guangzhou
 
-![beijing](docs/imgs/beijing.png)
+![beijing](https://raw.githubusercontent.com/railmapgen/rmp/refs/heads/main/docs/imgs/beijing.png)
 
 > Beijing
 
-![hongkong](docs/imgs/hongkong.png)
+![hongkong](https://raw.githubusercontent.com/railmapgen/rmp/refs/heads/main/docs/imgs/hongkong.png)
 
 > Hong Kong
 
