@@ -1,3 +1,10 @@
+// 初始化 marked 库支持表格
+marked.setOptions({
+    gfm: true,           // 启用 GitHub 风格的 Markdown
+    tables: true,        // 启用表格支持
+    breaks: false        // 启用软换行
+});
+
 // 调试用初始化提示
 console.log("初始化开始...");
 
