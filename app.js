@@ -160,8 +160,8 @@ async function showDetail(appId) {
         </div>
     </div>`;
 
-    // 确保 detail-main 的内容不会超出容器
-    document.querySelector('.detail-main').style.overflow = 'auto';
+    // 确保 detail-main 和 detail-sidebar 的内容不会超出容器
+    document.querySelector('.detail-container').style.overflow = 'hidden';
 
     try {
         const [descMD, changelogMD] = await Promise.all([
