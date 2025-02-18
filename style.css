@@ -466,6 +466,12 @@ body::before {
     color: var(--primary-text);
 }
 
+/* 自动换行 */
+.markdown-content pre {
+    white-space: pre-wrap; /* 自动换行 */
+    word-wrap: break-word;
+}
+
 /* ========== 状态提示 ========== */
 .loading {
     padding: 2rem;
