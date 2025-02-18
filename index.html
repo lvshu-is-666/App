@@ -101,6 +101,8 @@
 async function showDetail(appId) {
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
+
+    document.querySelector('.search-container').style.display = 'none';
     
     // 创建Markdown内容加载器
     async function loadFile(file) {
@@ -170,6 +172,8 @@ async function showDetail(appId) {
 
         // 显示列表
         function showList() {
+            document.querySelector('.search-container').style.display = 'flex';
+            
             document.getElementById('app-list').style.display = 'grid';
             document.getElementById('app-detail-container').style.display = 'none';
         }
