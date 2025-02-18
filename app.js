@@ -1,83 +1,4 @@
-// 获取 canvas 元素和上下文
-const canvas = document.getElementById('background-canvas');
-const ctx = canvas.getContext('2d');
 
-// 设置 canvas 尺寸
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// 粒子类
-class Particle {
-    constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.size = Math.random() * 2 + 1; // 粒子大小
-        this.speedX = (Math.random() - 0.5) * 2;
-        this.speedY = (Math.random() - 0.5) * 2;
-    }
-
-    draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // 边界碰撞检测
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-
-        this.draw();
-    }
-}
-
-// 创建粒子数组
-const particles = [];
-
-// 初始化粒子
-function initParticles() {
-    const numParticles = 200; // 粒子数量
-    for (let i = 0; i < numParticles; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const color = getRandomGradientColor();
-        particles.push(new Particle(x, y, color));
-    }
-}
-
-// 获取随机渐变颜色
-function getRandomGradientColor() {
-    const gradients = [
-        '#6c63ff', '#f06292', '#4caf50', '#ffeb3b', '#00bcd4',
-        '#9c27b0', '#ff5722', '#009688', '#3f51b5', '#2196f3'
-    ];
-    return gradients[Math.floor(Math.random() * gradients.length)];
-}
-
-// 动画函数
-function animate() {
-    requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(particle => {
-        particle.update();
-    });
-}
-
-// 窗口大小调整时更新 canvas 尺寸
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-// 初始化粒子并启动动画
-initParticles();
-animate();
 
 // 初始化 marked 支持表格
 marked.setOptions({
@@ -309,6 +230,87 @@ function showList() {
 
 // 启动初始化
  window.onload = () => {
+         // 获取 canvas 元素和上下文
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // 设置 canvas 尺寸
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 粒子类
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.size = Math.random() * 2 + 1; // 粒子大小
+            this.speedX = (Math.random() - 0.5) * 2;
+            this.speedY = (Math.random() - 0.5) * 2;
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // 边界碰撞检测
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+            this.draw();
+        }
+    }
+
+    // 创建粒子数组
+    const particles = [];
+
+    // 初始化粒子
+    function initParticles() {
+        const numParticles = 200; // 粒子数量
+        for (let i = 0; i < numParticles; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const color = getRandomGradientColor();
+            particles.push(new Particle(x, y, color));
+        }
+    }
+
+    // 获取随机渐变颜色
+    function getRandomGradientColor() {
+        const gradients = [
+            '#6c63ff', '#f06292', '#4caf50', '#ffeb3b', '#00bcd4',
+            '#9c27b0', '#ff5722', '#009688', '#3f51b5', '#2196f3'
+        ];
+        return gradients[Math.floor(Math.random() * gradients.length)];
+    }
+
+    // 动画函数
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(particle => {
+            particle.update();
+        });
+    }
+
+    // 窗口大小调整时更新 canvas 尺寸
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // 初始化粒子并启动动画
+    initParticles();
+    animate();
+     
     initAppList();
     initTheme(); // 初始化主题
     parseUrlParams(); // 初始化时解析 URL 参数
