@@ -395,7 +395,7 @@ body::before {
 
 .markdown-container .markdown-content li {
     margin: 0.8rem 0;
-    padding-left: 2rem;
+    padding-left: 2rem !important;
 }
 
 .markdown-container .markdown-content p {
