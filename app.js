@@ -244,8 +244,8 @@ function showList() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.size = Math.random() * 3 + 5; // 粒子大小
-            this.speedX = (Math.random() - 0.5) * 3;
-            this.speedY = (Math.random() - 0.5) * 3;
+            this.speedX = (Math.random() - 0.5) * 2;
+            this.speedY = (Math.random() - 0.5) * 2;
             this.color = getRandomColor(); // 随机颜色
             this.shape = getRandomShape();  // 随机形状
         }
