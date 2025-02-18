@@ -208,11 +208,9 @@ function showList() {
     initAppList();
     initTheme(); // 初始化主题
     parseUrlParams(); // 初始化时解析 URL 参数
-    document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightBlock(block);
         });
-    });
 };
 
 // 添加搜索功能
