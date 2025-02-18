@@ -243,7 +243,7 @@ function showList() {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 2; // 粒子大小
+            this.size = Math.random() * 3 + 5; // 粒子大小
             this.speedX = (Math.random() - 0.5) * 3;
             this.speedY = (Math.random() - 0.5) * 3;
             this.color = getRandomColor(); // 随机颜色
@@ -301,7 +301,7 @@ function showList() {
 
     // 创建粒子数组
     const particles = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
         particles.push(new Particle());
     }
 
