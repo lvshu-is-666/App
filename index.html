@@ -114,19 +114,23 @@ async function showDetail(appId) {
         <div class="detail-container">
             <!-- 左侧内容区 -->
             <div class="detail-main">
-                <h1>${app.name}</h1>
-                
-                <div class="description-container">
-                    <div class="loading-description">加载详细内容中...</div>
-                    <div id="description-content"></div>
-                </div>
-
-                <div class="changelog-container">
-                    <h2>更新日志</h2>
-                    <div class="loading-changelog">加载更新日志中...</div>
-                    <div id="changelog-content"></div>
-                </div>
-            </div>
+                        <h1>${app.name}</h1>
+                        
+                        <!-- 新添加的 Markdown 容器 -->
+                        <div class="markdown-container">
+                            <div class="description-container">
+                                <h2>应用介绍</h2>
+                                <div class="loading-description">加载详细内容中...</div>
+                                <div id="description-content"></div>
+                            </div>
+                            
+                            <div class="changelog-container">
+                                <h2>更新日志</h2>
+                                <div class="loading-changelog">加载更新日志中...</div>
+                                <div id="changelog-content"></div>
+                            </div>
+                        </div>
+                    </div>
 
             <!-- 右侧侧边栏 -->
             <div class="detail-sidebar">
