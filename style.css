@@ -329,7 +329,7 @@ body::before {
 /* detail-sidebar 样式 */
 .detail-sidebar {
     position: sticky;
-    top: 50%;
+    top: 120px;
     height: fit-content;
     text-align: center;
 }
