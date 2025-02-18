@@ -52,7 +52,7 @@ const apps = [
     {
         id: 2002,
         name: "文心一言",
-        brief: "文心一言，你的智能伙伴\n有用、有趣、有温度",
+        brief: "文心一言，你的智能伙伴\r\n有用、有趣、有温度",
         version: "3.5 / 4.0",
         download: "https://yiyan.baidu.com/",
         icon: "icon/文心一言.png",
@@ -68,6 +68,16 @@ const apps = [
         icon: "icon/Kimi.png",
         description: "details/Kimi.md",
         changelog: "log/Kimi.md"
+    },
+    {
+        id: 3001,
+        name: "地铁线路图绘制器",
+        brief: "一个线路图工具包项目",
+        version: "5.2.14",
+        download: "https://railmapgen.github.io/rmp/",
+        icon: "icon/rmp.png",
+        description: "details/rmp.md",
+        changelog: "log/rmp.md"
     }
 ];
 
