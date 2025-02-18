@@ -244,7 +244,7 @@ function showList() {
             this.x = x;
             this.y = y;
             this.color = color;
-            this.size = Math.random() * 2 + 1; // 粒子大小
+            this.size = Math.random() * 2 + 5; // 粒子大小
             this.speedX = (Math.random() - 0.5) * 2;
             this.speedY = (Math.random() - 0.5) * 2;
         }
@@ -273,7 +273,7 @@ function showList() {
 
     // 初始化粒子
     function initParticles() {
-        const numParticles = 200; // 粒子数量
+        const numParticles = 50; // 粒子数量
         for (let i = 0; i < numParticles; i++) {
             const x = Math.random() * canvas.width;
             const y = Math.random() * canvas.height;
