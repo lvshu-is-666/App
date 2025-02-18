@@ -52,15 +52,15 @@
 :root[style*="--current-theme: dark"] {
     --gradient-primary: linear-gradient(135deg, #0e5128 0%, #125029 100%);
     --gradient-secondary: linear-gradient(135deg, #184868 0%, #103a56 100%);
-    --gradient-bg: linear-gradient(150deg, #0a3d19 0%, #073b18 100%);
+    --gradient-bg: linear-gradient(150deg, #0b2914 0%, #03270e 100%);
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.15) 100%);
     --primary-text: #fff;
     --secondary-text: #aaa;
-    --card-bg: rgba(255,255,255,0.15);
+    --card-bg: rgba(255,255,255,0.25);
     --button-bg: linear-gradient(135deg, #666 0%, #555 100%);
     --button-text: #fff;
-    --shadow-primary: rgba(255,255,255,0.2);
-    --shadow-card: rgba(255,255,255,0.15);
+    --shadow-primary: rgba(255,255,255,0.3);
+    --shadow-card: rgba(255,255,255,0.2);
     --border-color: rgba(255,255,255,0.2);
     --icon-color: #aaa;
 }
@@ -205,7 +205,7 @@ body::before {
 }
 
 :root[style*="--current-theme: dark"] .container {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.1);
 }
