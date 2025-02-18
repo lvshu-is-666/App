@@ -5,7 +5,7 @@ marked.setOptions({
     breaks: true
 });
 
-this.answer = marked(res.data)
+//this.answer = marked(res.data)
 
 // 调试用初始化提示
 console.log("初始化开始...");
