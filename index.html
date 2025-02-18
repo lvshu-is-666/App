@@ -6,6 +6,7 @@
     <title>绿树应用中心</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://fastly.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" href="logo.ico" />
 </head>
 <body>
@@ -118,9 +119,11 @@ async function showDetail(appId) {
             <div class="detail-main">
                         <h1>${app.name}</h1>
                         <!-- 分享按钮 -->
-                <div class="share-container">
-                    <button class="share-btn" onclick="copyShareLink(${app.id})">分享</button>
-                </div>
+            <div class="share-container">
+                <button class="share-btn" onclick="copyShareLink(${app.id})">
+                    <i class="fas fa-share-alt"></i> 分享
+                </button>
+            </div>
                             <div class="description-container">
                                 <div class="loading-description">加载详细内容中...</div>
                                 <div id="description-content"></div>
