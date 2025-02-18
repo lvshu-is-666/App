@@ -316,12 +316,14 @@ body::before {
     transform: translateY(-2px);
 }
 
-
+/* detail-container 样式 */
 .detail-container {
     display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 3rem;
+    grid-template-columns: 3fr 2fr; /* 调整列宽比例 */
+    gap: 2rem;
     margin-top: 1rem;
+    max-width: 1200px; /* 设置最大宽度 */
+    margin: 0 auto;     /* 水平居中 */
 }
 
 .detail-sidebar {
@@ -351,11 +353,14 @@ body::before {
     /* Add more styles as needed */
 }
 
+/* detail-main 样式 */
 .detail-main {
     background: var(--gradient-card);
     border-radius: var(--border-radius);
     padding: 2.5rem;
     box-shadow: var(--shadow-card);
+    overflow: hidden; /* 防止内容溢出 */
+    max-width: 100%;   /* 确保宽度不超过容器 */
 }
 
 /* ========== 隐藏不必要的加载图标 ========== */
@@ -411,6 +416,7 @@ body::before {
     line-height: 1.8;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    max-width: 100%;   /* 确保宽度不超过容器 */
 }
 
 /* 图片自适应 */
@@ -482,10 +488,12 @@ body::before {
     font-size: 0.9em;
 }
 
+/* 表格样式 */
 .markdown-content table {
     width: 100%;
     border-collapse: collapse;
     margin: 1rem 0;
+    overflow-x: auto; /* 水平滚动 */
 }
 
 .markdown-content th,
