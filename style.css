@@ -319,9 +319,10 @@ body::before {
 .markdown-container > div {
     margin-bottom: 2rem;
 }
+*/
 
 /* ========== 隐藏不必要的加载图标 ========== */
-.detail-container .loading-description,
+/*.detail-container .loading-description,
 .detail-container .loading-changelog {
     display: none;
 }
