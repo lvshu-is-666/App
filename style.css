@@ -17,12 +17,12 @@
     --dark-primary-bg: linear-gradient(150deg, #111 0%, #222 100%);
     --dark-primary-text: #fff;
     --dark-secondary-text: #aaa;
-    --dark-card-bg: rgba(255, 255, 255, 0.05);
-    --dark-card-shadow: rgba(255, 255, 255, 0.06);
+    --dark-card-bg: rgba(255, 255, 255, 0.15);
+    --dark-card-shadow: rgba(255, 255, 255, 0.16);
     --dark-button-bg: linear-gradient(135deg, #444 0%, #333 100%);
     --dark-button-text: #fff;
-    --dark-button-shadow: rgba(255, 255, 255, 0.1);
-    --dark-border-color: rgba(255, 255, 255, 0.1);
+    --dark-button-shadow: rgba(255, 255, 255, 0.2);
+    --dark-border-color: rgba(255, 255, 255, 0.2);
     --dark-icon-color: #aaa;
     
     /* Common */
@@ -59,9 +59,9 @@
     --card-bg: rgba(255,255,255,0.15);
     --button-bg: linear-gradient(135deg, #666 0%, #555 100%);
     --button-text: #fff;
-    --shadow-primary: rgba(255,255,255,0.1);
-    --shadow-card: rgba(255,255,255,0.05);
-    --border-color: rgba(255,255,255,0.1);
+    --shadow-primary: rgba(255,255,255,0.2);
+    --shadow-card: rgba(255,255,255,0.15);
+    --border-color: rgba(255,255,255,0.2);
     --icon-color: #aaa;
 }
 
