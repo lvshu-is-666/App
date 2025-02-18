@@ -448,6 +448,24 @@ body::before {
     font-size: 0.9em;
 }
 
+.markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+    border: 1px solid var(--secondary-text);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.markdown-content th {
+    background-color: var(--gradient-primary);
+    color: var(--primary-text);
+}
+
 /* ========== 状态提示 ========== */
 .loading {
     padding: 2rem;
