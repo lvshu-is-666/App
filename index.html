@@ -13,11 +13,14 @@
     <nav class="gradient-navbar">
         <div class="container">
             <h1>绿树应用中心</h1>
-            <!-- 可选导航菜单 -->
+            <!-- 添加主题切换按钮 -->
             <div class="nav-menu">
                 <a href="https://lvshu-is-666.github.io/App/" class="nav-link">首页</a>
                 <a href="https://lvshu-is-666.github.io/App/about" class="nav-link">关于</a>
-                <button class="theme-toggle" onclick="toggleTheme()"></button>
+                <button class="theme-toggle-btn" onclick="toggleTheme()">
+                    <span class="light-icon">☀️</span>
+                    <span class="dark-icon">🌙</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -25,31 +28,20 @@
     <!-- 主内容区 -->
     <main class="gradient-background">
         <div class="container">
+            <!-- 搜索框 -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索应用...">
+                <!--<button class="search-btn"><i class="fas fa-search"></i></button>-->
+            </div>
+
             <div id="app-list" class="app-grid"></div>
             <div id="app-detail-container" style="display: none;">
-                <button class="gradient-back-btn" onclick="showList()">⬅ 返回列表</button>
+                <button class="gradient-back-btn" onclick="showList()">← 返回列表</button>
                 <div id="app-detail"></div>
             </div>
         </div>
     </main>
 
-<script>
-        // 主题切换逻辑
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }
-
-        // 初始化主题
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 
-                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.body.classList.toggle('dark-mode', savedTheme === 'dark');
-        }
-
-        initTheme();
-    </script>
-    
     <script>
         // 调试用初始化提示
         console.log("初始化开始...");
@@ -83,8 +75,8 @@
                 console.log("正在初始化应用列表...");
                 const container = document.getElementById('app-list');
                 if (!container) throw new Error('找不到列表容器元素');
-
-    container.innerHTML = apps.map(app => `
+                
+                container.innerHTML = apps.map(app => `
         <div class="app-card" onclick="showDetail(${app.id})">
             <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
             <div class="app-card-content">
@@ -96,6 +88,10 @@
     `).join('');
                 
                 console.log("应用列表初始化完成");
+                
+                // 初始化搜索功能
+                const searchInput = document.getElementById('search-input');
+                searchInput.addEventListener('input', debounce(handleSearch, 300));
             } catch (error) {
                 console.error("初始化失败:", error);
                 document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
@@ -106,6 +102,13 @@ async function showDetail(appId) {
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
     
+    // 创建Markdown内容加载器
+    async function loadFile(file) {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error('文件加载失败');
+        return await response.text();
+    }
+
     container.innerHTML = `
     <div class="app-detail">
         <div class="detail-container">
@@ -139,19 +142,9 @@ async function showDetail(appId) {
     </div>`;
 
     try {
-        // 并行加载两个Markdown文件
-        const [descResponse, changelogResponse] = await Promise.all([
-            fetch(app.description),
-            fetch(app.changelog)
-        ]);
-
-        if (!descResponse.ok || !changelogResponse.ok) {
-            throw new Error('文件加载失败');
-        }
-
         const [descMD, changelogMD] = await Promise.all([
-            descResponse.text(),
-            changelogResponse.text()
+            loadFile(app.description || app.detail),
+            loadFile(app.changelog || app.changelogs)
         ]);
 
         // 渲染应用介绍
@@ -184,6 +177,89 @@ async function showDetail(appId) {
         // 启动初始化
         window.onload = initAppList;
         console.log("脚本加载完成");
+
+        // 添加搜索功能
+        function handleSearch() {
+            const search = document.getElementById('search-input').value.toLowerCase();
+            const container = document.getElementById('app-list');
+            
+            const filteredApps = apps.filter(app => app.name.toLowerCase().includes(search));
+            container.innerHTML = filteredApps.map(app => `
+        <div class="app-card" onclick="showDetail(${app.id})">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <div class="app-card-content">
+                <h2>${app.name}</h2>
+                <p class="app-brief">${app.brief}</p>
+                <small>当前版本: ${app.version}</small>
+            </div>
+        </div>
+    `).join('');
+        }
+
+        // 防抖功能
+        function debounce(fn, delay) {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => fn.apply(this, args), delay);
+            };
+        }
+
+        // 主题切换功能
+        function toggleTheme() {
+            const darkThemeKey = 'prefers-color-scheme';
+            const root = document.documentElement;
+            const currentTheme = (root.style.getPropertyValue('--current-theme') || '').trim();
+            
+            if (currentTheme === 'dark') {
+                // 切换到默认主题
+                root.style.removeProperty('--current-theme');
+                document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'inline');
+                document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'none');
+                localStorage.removeItem('appTheme');
+            } else {
+                // 根据用户设置切换
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const newTheme = localStorage.getItem('appTheme') || (systemPrefersDark ? 'dark' : 'light');
+                
+                // 使用系统偏好
+                if (newTheme === 'dark') {
+                    root.style.setProperty('--current-theme', 'dark');
+                    document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'none');
+                    document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'inline');
+                    localStorage.setItem('appTheme', 'dark');
+                } else {
+                    // 复位主题
+                    root.style.removeProperty('--current-theme');
+                    document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'inline');
+                    document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'none');
+                    localStorage.removeItem('appTheme');
+                }
+            }
+        }
+
+        // 初始化主题
+        function initTheme() {
+            const storedTheme = localStorage.getItem('appTheme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.style.setProperty('--current-theme', currentTheme);
+            
+            // 根据主题显示图标
+            if (currentTheme === 'dark') {
+                document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'none');
+                document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'inline');
+            } else {
+                document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'none');
+                document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'inline');
+            }
+        }
+
+        window.onload = () => {
+            initAppList();
+            initTheme(); // 初始化主题
+        };
     </script>
 </body>
 </html>
