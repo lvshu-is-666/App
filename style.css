@@ -319,18 +319,20 @@ body::before {
 /* detail-container 样式 */
 .detail-container {
     display: grid;
-    grid-template-columns: 3fr 2fr; /* 调整列宽比例 */
+    grid-template-columns: 4fr 1fr; /* 调整列宽比例，左侧内容区更宽 */
     gap: 2rem;
     margin-top: 1rem;
     max-width: 1200px; /* 设置最大宽度 */
     margin: 0 auto;     /* 水平居中 */
 }
 
+/* detail-sidebar 样式 */
 .detail-sidebar {
-    position: sticky;
-    top: 120px;
+    position: static;
     height: fit-content;
     text-align: center;
+    max-width: 280px; /* 限制侧边栏的宽度 */
+    flex-shrink: 0;    /* 侧边栏宽度固定，不随内容缩小 */
 }
 
 .detail-icon {
@@ -361,6 +363,7 @@ body::before {
     box-shadow: var(--shadow-card);
     overflow: hidden; /* 防止内容溢出 */
     max-width: 100%;   /* 确保宽度不超过容器 */
+    flex: 1;           /* 确保内容区自动占据剩余空间 */
 }
 
 /* ========== 隐藏不必要的加载图标 ========== */
