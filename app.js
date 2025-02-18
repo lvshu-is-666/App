@@ -198,7 +198,6 @@ async function showDetail(appId) {
         });
     });
 }
-}
 
 // 复制分享链接
 function copyShareLink(appId) {
