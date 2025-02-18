@@ -385,17 +385,17 @@ body::before {
     border-bottom: 2px solid #eee;
 }
 
-.markdown-container .markdown-content ul,
-.markdown-container .markdown-content ol{
-    padding-left: 1.2rem !important; /* 列表左侧缩进 */
+.markdown-content ul,
+.markdown-content ol{
+    padding-left: 2rem !important; /* 列表左侧缩进 */
     margin-bottom: 1.5rem;
     margin: 1rem 0;
-    /*list-style-type: '➤';*/
+    list-style-type: '➤';
 }
 
 .markdown-container .markdown-content li {
     margin: 0.8rem 0;
-    padding-left: 0.8rem;
+    padding-left: 2rem;
 }
 
 .markdown-container .markdown-content p {
