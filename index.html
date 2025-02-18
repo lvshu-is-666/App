@@ -163,6 +163,22 @@ async function showDetail(appId) {
         </div>
     </div>`;
 
+        // 复制分享链接
+function copyShareLink(appId) {
+    const baseUrl = window.location.origin + window.location.pathname;
+    const shareUrl = `${baseUrl}?appId=${appId}`;
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(shareUrl)
+        .then(() => {
+            alert(`已复制分享链接：${shareUrl}`);
+        })
+        .catch(err => {
+            console.error('复制失败:', err);
+            alert('复制失败，请手动复制以下链接：' + shareUrl);
+        });
+}
+    
     try {
         const [descMD, changelogMD] = await Promise.all([
             loadFile(app.description || app.detail),
