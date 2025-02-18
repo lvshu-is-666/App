@@ -43,23 +43,6 @@
     </main>
 
     <script>
-
-        function parseUrlParams() {
-    const params = new URLSearchParams(window.location.search);
-    const appId = params.get('appId');
-    
-    if (appId) {
-        showDetail(parseInt(appId));
-        document.getElementById('app-list').style.display = 'none';
-        document.getElementById('app-detail-container').style.display = 'block';
-    }
-}
-
-window.onload = () => {
-    initAppList();
-    initTheme(); // 初始化主题
-    parseUrlParams(); // 解析 URL 参数
-};
         // 调试用初始化提示
         console.log("初始化开始...");
         
@@ -215,7 +198,11 @@ function copyShareLink(appId) {
         }
 
         // 启动初始化
-        window.onload = initAppList;
+        window.onload = () => {
+            initAppList();
+            initTheme(); // 初始化主题
+            parseUrlParams(); // 初始化时解析 URL 参数
+        };
         console.log("脚本加载完成");
 
         // 添加搜索功能
@@ -296,10 +283,20 @@ function copyShareLink(appId) {
             }
         }
 
-        window.onload = () => {
-            initAppList();
-            initTheme(); // 初始化主题
-        };
+        // 解析 URL 参数
+        function parseUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const appId = params.get('appId');
+            
+            if (appId) {
+                console.log("从 URL 中解析到 appId:", appId);
+                
+                // 显示应用详情页
+                showDetail(parseInt(appId));
+                document.getElementById('app-list').style.display = 'none';
+                document.getElementById('app-detail-container').style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
