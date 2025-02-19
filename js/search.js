@@ -21,11 +21,3 @@ function handleSearch() {
         </div>
     `).join('');
 }
-
-// 显示列表
-function showList() {
-    document.querySelector('.search-container').style.display = 'flex';
-    
-    document.getElementById('app-list').style.display = 'grid';
-    document.getElementById('app-detail-container').style.display = 'none';
-}
