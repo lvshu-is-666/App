@@ -484,6 +484,8 @@ body::before {
 .detail-icon {
     width: 200px;
     height: 200px;
+    position: sticky;
+    top: 120px;
     object-fit: contain;
     border-radius: var(--border-radius);
     margin-bottom: 1.5rem;
