@@ -40,12 +40,19 @@
                 <div class="search-input-container">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
                     <input type="text" id="search-input" placeholder="搜索应用...">
-                    <div class="tag-select-container">
-                        <i class="fa-solid fa-tags"> </i>
-                        <select id="tag-select" class="tag-select">
-                            <option value="">所有标签</option>
-                            <!-- 分类选项将根据应用数据动态生成 -->
-                        </select>
+                </div>
+                <div class="custom-select-container">
+                    <i class="fa-solid fa-tags"> </i>
+                    <div class="custom-select" onclick="toggleDropdown()">
+                        <span class="selected-option">所有标签</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <div class="menu-item" onclick="selectOption('All')">所有标签</div>
+                        <div class="menu-item" onclick="selectOption('Tool')">工具</div>
+                        <div class="menu-item" onclick="selectOption('System')">系统</div>
+                        <div class="menu-item" onclick="selectOption('Game')">游戏</div>
+                        <div class="menu-item" onclick="selectOption('AI')">人工智能</div>
                     </div>
                 </div>
             </div>
