@@ -538,8 +538,8 @@ body::before {
 
 /* 图片自适应 */
 .markdown-content img {
-    max-width: 100%;   /* 确保图片不会超出容器宽度 */
-    height: auto;      /* 维持图片的纵横比 */
+    max-width: 100% !important;   /* 确保图片不会超出容器宽度 */
+    height: auto !important;      /* 维持图片的纵横比 */
     display: block;    /* 改善图片在容器中的布局 */
     margin: 1rem auto;  /* 上下外边距为1rem，左右自动居中 */
     border-radius: 8px;
