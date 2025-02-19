@@ -1,7 +1,7 @@
 
 
 // 粒子效果开关
-let isParticleEffectActive = true;
+let isParticleEffectActive;
 let animationFrameId = null; // 存储动画帧 ID
 
 // 初始化粒子效果
@@ -106,6 +106,8 @@ function initParticleEffect() {
     const storedState = localStorage.getItem('particleEffectState');
     if (storedState !== null) {
         isParticleEffectActive = JSON.parse(storedState);
+    } else {
+        isParticleEffectActive = true;
     }
 
     // 初始化按钮样式
@@ -118,7 +120,11 @@ function initParticleEffect() {
 
 // 切换粒子效果
 function toggleParticleEffect() {
+    
     isParticleEffectActive = !isParticleEffectActive;
+    
+    // 保存粒子效果状态到 localStorage
+    localStorage.setItem('particleEffectState', isParticleEffectActive);
 
     // 更新按钮样式
     const button = document.getElementById('toggle-btn');
@@ -138,7 +144,4 @@ function toggleParticleEffect() {
     } else {
         initParticleEffect(); // 重新启动粒子效果
     }
-
-    // 保存粒子效果状态到 localStorage
-    localStorage.setItem('particleEffectState', isParticleEffectActive);
 }
