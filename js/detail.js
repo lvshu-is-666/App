@@ -79,14 +79,8 @@ async function showDetail(appId) {
                             <i class="fa-solid fa-download"></i> 下载 ${app.version} 版本
                         </button>
                     ` : `
-                        <div class="other-downloads">
-                            <span>很抱歉，该应用不支持您的设备！</span>
-                            <span>您可以尝试以下操作：</span>
-                            <ul>
-                                <li>联系开发者获取支持</li>
-                                <li>检查设备兼容性</li>
-                                <li>使用网页版</li>
-                            </ul>
+                        <div class=".unsupported-device">
+                            <p>很抱歉，该应用不支持您的设备！</p>
                         </div>
                     `}
                     ${app.webVersion ? `
