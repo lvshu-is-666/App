@@ -481,7 +481,7 @@ function initParticleEffect() {
 
     // 初始化按钮样式
     const button = document.getElementById('toggle-btn');
-    button.classList.add(isParticleEffectActive ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off');
+    button.classList.add(isParticleEffectActive ? 'fa-toggle-on' : 'fa-toggle-off');
 
     // 启动动画
     animationFrameId = requestAnimationFrame(animate);
@@ -494,11 +494,11 @@ function toggleParticleEffect() {
     // 更新按钮样式
     const button = document.getElementById('toggle-btn');
     if (isParticleEffectActive) {
-        button.classList.remove('fa-solid fa-toggle-off');
-        button.classList.add('fa-solid fa-toggle-on');
+        button.classList.remove('fa-toggle-off');
+        button.classList.add('fa-toggle-on');
     } else {
-        button.classList.remove('fa-solid fa-toggle-on');
-        button.classList.add('fa-solid fa-toggle-off');
+        button.classList.remove('fa-toggle-on');
+        button.classList.add('fa-toggle-off');
     }
 
     // 如果粒子效果关闭，重置画布
