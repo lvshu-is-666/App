@@ -30,6 +30,10 @@ async function showDetail(appId) {
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
 
+    // 检测设备类型
+    const deviceType = detectDeviceType();
+    const isSupported = app.supportedDevices.includes(deviceType);
+
     document.querySelector('.search-container').style.display = 'none';
 
     container.innerHTML = `
@@ -68,10 +72,37 @@ async function showDetail(appId) {
                 <img src="${app.icon}" 
                      class="detail-icon" 
                      alt="${app.name}图标">
-                <button class="download-btn" 
-                        onclick="location.href='${app.download}'">
-                    <i class="fa-solid fa-download"></i> 下载 ${app.version} 版本
-                </button>
+                <div class="download-area">
+                    ${isSupported ? `
+                        <button class="download-btn" 
+                                onclick="location.href='${app.download[deviceType]}'">
+                            <i class="fa-solid fa-download"></i> 下载 ${app.version} 版本
+                        </button>
+                    ` : `
+                        <div class="unsupported-device">
+                            <p>很抱歉，该应用不支持您的设备！</p>
+                            <p>您可以尝试以下操作：</p>
+                            <ul>
+                                <li>联系开发者获取支持</li>
+                                <li>检查设备兼容性</li>
+                                <li>使用网页版</li>
+                            </ul>
+                        </div>
+                    `}
+                    ${app.webVersion ? `
+                        <a href="${app.webVersion}" 
+                           class="download-link">
+                            <i class="fa-solid fa-globe"></i> 使用网页版
+                        </a>
+                    ` : ''}
+                    <div class="other-downloads">
+                        <span>其他下载选项：</span>
+                        <a href="${app.download.windows}" 
+                           class="download-link">Windows</a>
+                        <a href="${app.download.mobile}" 
+                           class="download-link">移动</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="back-and-share-container">
