@@ -12,6 +12,8 @@ function debounce(fn, delay) {
 let scrollBtn = document.getElementById('scroll-top-btn');
 const container = document.getElementById('app-detail'); // 替换为实际的滚动容器 ID
 
+scrollBtn.style.display = 'none'; //初始化
+
 if (container) {
     container.addEventListener('scroll', () => {
         if (container.scrollTop > 500) {
