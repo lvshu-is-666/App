@@ -1,4 +1,4 @@
-# Welcome to GeoGebra!
+## Welcome to GeoGebra!
 
 
 This repository contains source code of [GeoGebra](https://www.geogebra.org)'s math apps.
@@ -7,7 +7,7 @@ It is available on a private GitLab instance and mirrored to GitHub.
 Please read https://www.geogebra.org/license about GeoGebra's
 licensing.
 
-## Running the web version
+### Running the web version
 To start the web version from command line, run
 
 ```
@@ -25,7 +25,7 @@ where `A.B.C.D` is your IP address.
 Then you can access the dev server through `http://A.B.C.D:8888`.
 You can also run `./gradlew :web:tasks` to list other options.
 
-## Running the desktop version (Classic 5)
+### Running the desktop version (Classic 5)
 To start the desktop version from command line, run
 
 ```
@@ -33,7 +33,7 @@ To start the desktop version from command line, run
 ```
 You can also run `./gradlew :desktop:tasks` to list other options.
 
-## Setup the development environment
+### Setup the development environment
 
 * Open IntelliJ. If you don't have IntelliJ on your computer yet 
 then you can download and install it from [here](https://www.jetbrains.com/idea/download)
