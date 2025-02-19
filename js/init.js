@@ -8,7 +8,10 @@ const apps = [
         name: "Lvshu OS",
         brief: "绿树公司操作系统",
         version: "7.0.3",
-        download: "apps/Lvshu OS.exe",
+        download: {
+            windows: "apps/Lvshu OS.exe"
+        },
+        supportedDevices: ["windows"], // 支持的设备类型
         icon: "icon/Lvshu OS.png",
         description: "details/Lvshu OS.md",
         changelog: "log/Lvshu OS.md",
@@ -19,7 +22,8 @@ const apps = [
         name: "谜之工具箱",
         brief: "你想要的工具这里都有",
         version: "3.6.0",
-        download: "微信小程序",
+        download: {},
+        supportedDevices: ["windows", "mobile"],
         icon: "icon/谜之工具箱.png",
         description: "details/谜之工具箱.md",
         changelog: "log/谜之工具箱.md",
@@ -30,7 +34,10 @@ const apps = [
         name: "俄罗斯方块3",
         brief: "你能打到4000分以上吗？",
         version: "3.0.1",
-        download: "apps/俄罗斯方块3.exe",
+        download: {
+            windows: "apps/俄罗斯方块3.exe"
+        },
+        supportedDevices: ["windows"],
         icon: "icon/俄罗斯方块.png",
         description: "details/俄罗斯方块.md",
         changelog: "log/俄罗斯方块.md",
@@ -41,7 +48,11 @@ const apps = [
         name: "DeepSeek",
         brief: "DeepSeek - 探索未至之境",
         version: "V3 / R1",
-        download: "https://chat.deepseek.com/",
+        download: {
+            mobile: "https://download.deepseek.com/app/"
+        },
+        supportedDevices: ["mobile"],
+        webVersion: "https://chat.deepseek.com/", // 网页版链接
         icon: "icon/deepseek.svg",
         description: "details/deepseek.md",
         changelog: "log/deepseek.md",
@@ -52,7 +63,12 @@ const apps = [
         name: "文心一言",
         brief: "文心一言，你的智能伙伴<br>有用、有趣、有温度",
         version: "3.5 / 4.0",
-        download: "https://yiyan.baidu.com/",
+        download: {
+            windows: "https://xiaoyan-desktop.cdn.bcebos.com/wenxiaoyan_setup.exe",
+            mobile: "https://www.wenxiaoyan.com/app"
+        },
+        supportedDevices: ["windows", "mobile"],
+        webVersion: "https://yiyan.baidu.com/",
         icon: "icon/文心一言.png",
         description: "details/文心一言.md",
         changelog: "log/文心一言.md",
@@ -63,7 +79,12 @@ const apps = [
         name: "Kimi",
         brief: "Kimi.ai - 会推理解析，能深度思考的AI助手",
         version: "k1.5 长思考",
-        download: "https://kimi.moonshot.cn/",
+        download: {
+            windows: "https://kimi-img.moonshot.cn/prod-chat-kimi/kimi/kimi-desktop-windows-x86.exe",
+            mobile: "https://kimi.moonshot.cn/download/app"
+        },
+        supportedDevices: ["windows", "mobile"],
+        webVersion: "https://kimi.moonshot.cn/",
         icon: "icon/Kimi.png",
         description: "details/Kimi.md",
         changelog: "log/Kimi.md",
@@ -74,7 +95,9 @@ const apps = [
         name: "地铁线路图绘制器",
         brief: "一个线路图工具包项目(rmp)",
         version: "5.2.14",
-        download: "https://railmapgen.github.io/rmp/",
+        download: {},
+        supportedDevices: [],
+        webVersion: "https://railmapgen.github.io/rmp/",
         icon: "icon/rmp.png",
         description: "details/rmp.md",
         changelog: "log/rmp.md",
@@ -85,7 +108,12 @@ const apps = [
         name: "GeoGebra",
         brief: "以更聪明的方式讲授和学习数学",
         version: "网页版",
-        download: "https://www.geogebra.org/download",
+        download: {
+            windows: "https://www.geogebra.org/download",
+            mobile: "https://www.geogebra.org/download"
+        },
+        supportedDevices: ["windows", "mobile"],
+        webVersion: "https://www.geogebra.org/calculator",
         icon: "icon/geogebra.svg",
         description: "details/geogebra.md",
         changelog: "log/geogebra.md",
@@ -96,13 +124,42 @@ const apps = [
         name: "Desmos",
         brief: "免费使用的精美数学工具组",
         version: "网页版",
-        download: "https://www.desmos.com/calculator?lang=zh-CN",
+        download: {},
+        supportedDevices: [],
+        webVersion: "https://www.desmos.com/calculator?lang=zh-CN",
         icon: "https://www.desmos.com/assets/build/desmos-studio-pbc-IWAXZOF2.png",
         description: "details/desmos.md",
         changelog: "log/desmos.md",
         tags: ["工具", "学习"]
     }
 ];
+
+// 检测设备类型
+function detectDeviceType() {
+    if (window.innerWidth <= 768) {
+        return 'mobile';
+    }
+    if (navigator.userAgent.includes('Windows')) {
+        return 'windows';
+    }
+    return 'unknown';
+}
+
+// 初始化应用详情页面
+function initAppDetail() {
+    const appId = getQueryParam('appId');
+    const deviceType = detectDeviceType();
+    showDetail(appId, deviceType);
+}
+
+// 获取查询参数
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// 在页面加载时初始化应用详情
+window.addEventListener('load', initAppDetail);
 
 // 初始化应用列表
 function initAppList() {
