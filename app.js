@@ -86,7 +86,7 @@ const apps = [
 
 // 滚动置顶功能
 function scrollTop() {
-    const container = document.getElementById('main-content'); // 替换为实际的滚动容器 ID
+    const container = document.getElementById('app-detail'); // 替换为实际的滚动容器 ID
     if (container) {
         container.scrollTo({
             top: 0,
@@ -102,7 +102,7 @@ function scrollTop() {
 
 // 显示和隐藏置顶按钮
 let scrollBtn = document.getElementById('scroll-top-btn');
-const container = document.getElementById('main-content'); // 替换为实际的滚动容器 ID
+const container = document.getElementById('app-detail'); // 替换为实际的滚动容器 ID
 
 if (container) {
     container.addEventListener('scroll', () => {
