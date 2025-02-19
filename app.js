@@ -381,8 +381,9 @@ function showList() {
 let isParticleEffectActive = true;
 
 // 初始化粒子效果
+let animationId;
 function initParticleEffect() {
-// 获取 canvas 元素和上下文
+    // 获取 canvas 元素和上下文
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -481,9 +482,10 @@ function toggleParticleEffect() {
     isParticleEffectActive = !isParticleEffectActive;
 
     if (isParticleEffectActive) {
-        const canvas = document.getElementById('background-canvas');
-        initParticleEffect();
-    } else {
+        startParticleAnimation();
+    } else if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = undefined;
         const canvas = document.getElementById('background-canvas');
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -498,8 +500,8 @@ function toggleParticleEffect() {
 window.onload = () => {
     initAppList();
     initTheme(); // 初始化主题
-initSearch();
-     initParticleEffect(); // 初始化粒子效果
+    initSearch();
+    initParticleEffect(); // 初始化粒子效果
     parseUrlParams(); // 初始化时解析 URL 参数
         document.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightBlock(block);
