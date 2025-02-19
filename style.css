@@ -334,6 +334,31 @@ body::before {
 }
 
 /* ========== 应用详情页 ========== */
+#scroll-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+#scroll-top-btn:hover {
+    opacity: 1;
+}
+
+#scroll-top-btn i {
+    font-size: 1.5rem;
+    color: var(--primary-text);
+}
+
 .header-section {
     display: flex;
     align-items: center;
