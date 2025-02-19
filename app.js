@@ -90,7 +90,7 @@ const apps = [
     }
 ];
 
-// 初始化标签筛选下拉菜单
+// 初始化标签下拉菜单
 function generateTagOptions() {
     const tagSelect = document.getElementById('tag-select');
     const allTags = [].concat(...apps.map(app => app.tags));
@@ -104,6 +104,14 @@ function generateTagOptions() {
         tagSelect.appendChild(option);
     });
 }
+
+document.getElementById('tag-select').addEventListener('change', () => {
+    handleSearch();
+});
+
+document.getElementById('search-input').addEventListener('input', () => {
+    handleSearch();
+});
 
 // 初始化应用列表
 function initAppList() {
@@ -370,19 +378,20 @@ function showList() {
 
 //搜索功能
 // 修改搜索与标签筛选逻辑
-function handleSearch(searchTerm = '', selectedTag = '') {
-    const container = document.getElementById('app-list');
+function handleSearch() {
+    const searchTerm = document.getElementById('search-input').value.trim();
+    const selectedTag = document.getElementById('tag-select').value;
     
     const filteredApps = apps.filter(app => {
         const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
         const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
         const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
         const selectedTagMatch = selectedTag ? app.tags.includes(selectedTag) : true;
-
+        
         return (nameMatch || descriptionMatch || tagsMatch) && selectedTagMatch;
     });
 
-    container.innerHTML = filteredApps.map(app => `
+    document.getElementById('app-list').innerHTML = filteredApps.map(app => `
         <div class="app-card" onclick="showDetail(${app.id})">
             <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
             <div class="app-card-content">
