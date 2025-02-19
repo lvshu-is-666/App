@@ -156,6 +156,11 @@ body::before {
     color: var(--primary-text);
 }
 
+#toggle-particles-btn .fa-toggle-off {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+}
+
 /* ========== 导航栏 ========== */
 .gradient-navbar {
     background: var(--gradient-primary);
