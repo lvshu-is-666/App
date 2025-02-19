@@ -226,6 +226,12 @@ async function showDetail(appId) {
                 </button>
             </div>
         </div>
+        <div class="back-and-share-container">
+            <button class="gradient-back-btn" onclick="showList()"><i class="fa-solid fa-arrow-left"></i>返回列表</button>
+            <button class="share-btn" onclick="copyShareLink(${app.id})">
+                <i class="fa-solid fa-share-from-square"></i> 分享
+            </button>
+        </div>
     </div>`;
 
     // 确保 detail-main 和 detail-sidebar 的内容不会超出容器
