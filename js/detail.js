@@ -25,6 +25,7 @@ async function loadFile(file) {
 async function showDetail(appId) {
     // 记录当前滚动位置
     localStorage.setItem('scrollPosition', window.pageYOffset);
+    window.scrollTo(0,0);
     
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
