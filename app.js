@@ -191,14 +191,16 @@ async function showDetail(appId) {
         <div class="detail-container">
             <!-- 左侧内容区 -->
             <div class="detail-main">
-                <div class="header-section">
-                    <h1 class="app-title">${app.name}</h1>
+                <h1 class="app-title">${app.name}</h1>
+                <div class="app-meta">
                     <div class="tags-section">
-                        ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i> ${tag}</span>`).join('')}
+                        ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
                     </div>
-                    <button class="share-btn" onclick="copyShareLink(${app.id})">
-                        <i class="fas fa-share-alt"></i> 分享
-                    </button>
+                    <div class="share-section">
+                        <button class="share-btn" onclick="copyShareLink(${app.id})">
+                            <i class="fas fa-share-alt"></i> 分享
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="description-container">
