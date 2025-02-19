@@ -761,7 +761,7 @@ body::before {
     }
 
     .markdown-content img {
-        width: 100%;    /* 图片宽度自适应 */
+        max-width: 100%;    /* 图片宽度自适应 */
         height: auto;   /* 高度自动调整 */
     }
 
