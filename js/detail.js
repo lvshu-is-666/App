@@ -1,3 +1,19 @@
+
+
+// 显示列表
+function showList() {
+    document.querySelector('.search-container').style.display = 'flex';
+    
+    document.getElementById('app-list').style.display = 'grid';
+    document.getElementById('app-detail-container').style.display = 'none';
+
+    // 恢复滚动位置
+    const scrollPosition = localStorage.getItem('scrollPosition');
+    if (scrollPosition !== null) {
+        window.scrollTo(0, parseInt(scrollPosition));
+    }
+}
+
 // 创建Markdown内容加载器
 async function loadFile(file) {
     const response = await fetch(file);
@@ -7,6 +23,9 @@ async function loadFile(file) {
 
 // 显示应用详情页
 async function showDetail(appId) {
+    // 记录当前滚动位置
+    localStorage.setItem('scrollPosition', window.pageYOffset);
+    
     const app = apps.find(a => a.id === appId);
     const container = document.getElementById('app-detail');
 
