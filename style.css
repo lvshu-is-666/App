@@ -365,7 +365,7 @@ body::before {
 /* ========== 应用详情页 ========== */
 #scroll-top-btn {
     position: fixed;
-    bottom: 4rem;
+    bottom: 6rem;
     right: 2rem;
     background: var(--gradient-primary);
     color: var(--primary-text);
