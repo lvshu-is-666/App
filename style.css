@@ -269,13 +269,17 @@ body::before {
 
 .tag-select-container {
     position: relative;
-    background: var(--gradient-card);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 24px;
     padding: 0.8rem 1.2rem;
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     transition: background 0.3s ease;
+}
+
+.tag-select-container:hover {
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .tag-icon {
@@ -292,13 +296,18 @@ body::before {
     background: none;
     color: var(--primary-text);
     font-size: 1rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 7 12 23 6"></polygon></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+    padding-right: 2rem;
 }
 
-/*.tag-select:focus {
-    outline: none;
-    border-color: var(--gradient-primary);
-    background: rgba(255, 255, 255, 0.9);
-}*/
+.tag-select::-ms-expand {
+    display: none;
+}
 
 .app-card {
     background: var(--gradient-card);
