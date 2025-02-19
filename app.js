@@ -90,29 +90,6 @@ const apps = [
     }
 ];
 
-// 初始化标签下拉菜单
-function generateTagOptions() {
-    const tagSelect = document.getElementById('tag-select');
-    const allTags = [].concat(...apps.map(app => app.tags));
-    const uniqueTags = [...new Set(allTags)];
-    
-    tagSelect.innerHTML = '<option value="">所有标签</option>';
-    uniqueTags.forEach(tag => {
-        const option = document.createElement('option');
-        option.value = tag;
-        option.textContent = tag;
-        tagSelect.appendChild(option);
-    });
-}
-
-document.getElementById('tag-select').addEventListener('change', () => {
-    handleSearch();
-});
-
-document.getElementById('search-input').addEventListener('input', () => {
-    handleSearch();
-});
-
 function toggleDropdown() {
     const dropdownMenu = document.getElementById('dropdown-menu');
     if (dropdownMenu.style.display === 'block') {
@@ -161,8 +138,6 @@ function initAppList() {
             handleSearch(searchInput.value.trim(), tagSelect.value);
         });
 
-        // 生成标签筛选下拉菜单
-        generateTagOptions();
     } catch (error) {
         console.error("初始化失败:", error);
         document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
