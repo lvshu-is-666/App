@@ -379,9 +379,9 @@ function showList() {
 
 // 粒子效果开关
 let isParticleEffectActive = true;
+let animationFrameId = null; // 存储动画帧 ID
 
 // 初始化粒子效果
-let animationId;
 function initParticleEffect() {
     // 获取 canvas 元素和上下文
     const canvas = document.getElementById('background-canvas');
@@ -460,13 +460,19 @@ function initParticleEffect() {
 
     // 动画函数
     function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (!isParticleEffectActive) {
+            cancelAnimationFrame(animationFrameId);
+            return;
+        }
 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles.forEach(particle => {
             particle.update();
         });
+
+        animationFrameId = requestAnimationFrame(animate);
     }
+    
     // 窗口大小调整时更新 canvas 尺寸
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
@@ -474,27 +480,32 @@ function initParticleEffect() {
     });
 
     // 启动动画
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 }
 
 // 切换粒子效果
 function toggleParticleEffect() {
     isParticleEffectActive = !isParticleEffectActive;
 
-    if (isParticleEffectActive) {
-        startParticleAnimation();
-    } else if (animationId) {
-        cancelAnimationFrame(animationId);
-        animationId = undefined;
-        const canvas = document.getElementById('background-canvas');
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    // 更新按钮图标
+    // 更新按钮图标和样式
     const button = document.getElementById('toggle-particles-btn');
     button.style.backgroundColor = isParticleEffectActive ? 'var(--gradient-primary)' : 'var(--gradient-secondary)';
+    
+    // 清除画布
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+// 窗口大小调整时更新 canvas 尺寸
+window.addEventListener('resize', () => {
+    const canvas = document.getElementById('background-canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// 启动粒子效果
+initParticleEffect();
 
 // 启动初始化
 window.onload = () => {
