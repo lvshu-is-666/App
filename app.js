@@ -86,14 +86,41 @@ const apps = [
 
 // 滚动置顶功能
 function scrollTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    const container = document.getElementById('main-content'); // 替换为实际的滚动容器 ID
+    if (container) {
+        container.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
 }
 
 // 显示和隐藏置顶按钮
 let scrollBtn = document.getElementById('scroll-top-btn');
+const container = document.getElementById('main-content'); // 替换为实际的滚动容器 ID
+
+if (container) {
+    container.addEventListener('scroll', () => {
+        if (container.scrollTop > 200) {
+            scrollBtn.style.display = 'block';
+        } else {
+            scrollBtn.style.display = 'none';
+        }
+    });
+} else {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 200) {
+            scrollBtn.style.display = 'block';
+        } else {
+            scrollBtn.style.display = 'none';
+        }
+    });
+}
 
 // 节流函数
 function throttle(fn, delay) {
