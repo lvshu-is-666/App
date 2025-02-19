@@ -202,16 +202,18 @@ async function showDetail(appId) {
                         </button>
                     </div>
                 </div>
-                
-                <div class="description-container">
-                    <div class="loading-description">加载详细内容中...</div>
-                    <div id="description-content"></div>
-                </div>
-                
-                <div class="changelog-container">
-                    <h2>更新日志</h2>
-                    <div class="loading-changelog">加载更新日志中...</div>
-                    <div id="changelog-content"></div>
+
+                <div class="markdown-content">
+                    <div class="description-container">
+                        <div class="loading-description">加载详细内容中...</div>
+                        <div id="description-content"></div>
+                    </div>
+                    
+                    <div class="changelog-container">
+                        <h2>更新日志</h2>
+                        <div class="loading-changelog">加载更新日志中...</div>
+                        <div id="changelog-content"></div>
+                    </div>
                 </div>
             </div>
 
