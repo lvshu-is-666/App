@@ -19,7 +19,8 @@ const apps = [
         download: "apps/Lvshu OS.exe",
         icon: "icon/Lvshu OS.png",
         description: "details/Lvshu OS.md",
-        changelog: "log/Lvshu OS.md"
+        changelog: "log/Lvshu OS.md",
+        tags: ["绿树公司官方应用", "系统"] // 新添加的标签字段
     },
     {
         id: 1002,
@@ -29,7 +30,8 @@ const apps = [
         download: "微信小程序",
         icon: "icon/谜之工具箱.png",
         description: "details/谜之工具箱.md",
-        changelog: "log/谜之工具箱.md"
+        changelog: "log/谜之工具箱.md",
+        tags: ["绿树公司官方应用", "工具"]
     },
     {
         id: 1003,
@@ -39,7 +41,8 @@ const apps = [
         download: "apps/俄罗斯方块3.exe",
         icon: "icon/俄罗斯方块.png",
         description: "details/俄罗斯方块.md",
-        changelog: "log/俄罗斯方块.md"
+        changelog: "log/俄罗斯方块.md",
+        tags: ["绿树公司官方应用", "游戏"]
     },
     {
         id: 2001,
@@ -49,7 +52,8 @@ const apps = [
         download: "https://chat.deepseek.com/",
         icon: "icon/deepseek.svg",
         description: "details/deepseek.md",
-        changelog: "log/deepseek.md"
+        changelog: "log/deepseek.md",
+        tags: ["人工智能(AI)大模型", "工具"]
     },
     {
         id: 2002,
@@ -59,7 +63,8 @@ const apps = [
         download: "https://yiyan.baidu.com/",
         icon: "icon/文心一言.png",
         description: "details/文心一言.md",
-        changelog: "log/文心一言.md"
+        changelog: "log/文心一言.md",
+        tags: ["人工智能(AI)大模型", "工具"]
     },
     {
         id: 2003,
@@ -69,7 +74,8 @@ const apps = [
         download: "https://kimi.moonshot.cn/",
         icon: "icon/Kimi.png",
         description: "details/Kimi.md",
-        changelog: "log/Kimi.md"
+        changelog: "log/Kimi.md",
+        tags: ["人工智能(AI)大模型", "工具"]
     },
     {
         id: 3001,
@@ -79,7 +85,8 @@ const apps = [
         download: "https://railmapgen.github.io/rmp/",
         icon: "icon/rmp.png",
         description: "details/rmp.md",
-        changelog: "log/rmp.md"
+        changelog: "log/rmp.md",
+        tags: ["工具", "交通", "模拟"]
     }
 ];
 
@@ -91,25 +98,48 @@ function initAppList() {
         if (!container) throw new Error('找不到列表容器元素');
         
         container.innerHTML = apps.map(app => `
-    <div class="app-card" onclick="showDetail(${app.id})">
-        <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
-        <div class="app-card-content">
-            <h2>${app.name}</h2>
-            <p class="app-brief">${app.brief}</p>  <!-- 显示简短描述 -->
-            <small>当前版本: ${app.version}</small>
-        </div>
-    </div>
-`).join('');
+            <div class="app-card" onclick="showDetail(${app.id})">
+                <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+                <div class="app-card-content">
+                    <h2>${app.name}</h2>
+                    <p class="app-brief">${app.brief}</p>  <!-- 显示简短描述 -->
+                    <small>当前版本: ${app.version}</small>
+                    <div class="app-tags">
+                        ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
         
         console.log("应用列表初始化完成");
-        
+
         // 初始化搜索功能
         const searchInput = document.getElementById('search-input');
-        searchInput.addEventListener('input', debounce(handleSearch, 300));
+        searchInput.addEventListener('input', debounce(() => {
+            const searchTerm = searchInput.value.trim();
+            const selectedTags = document.getElementById('category-select').value;
+            handleSearch(searchTerm, selectedTags);
+        }, 300));
+        // 动态生成分类下拉菜单
+        generateTagOptions();
     } catch (error) {
         console.error("初始化失败:", error);
         document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
     }
+}
+
+function generateTagOptions() {
+    const tagSelect = document.getElementById('category-select');
+    const allTags = [].concat(...apps.map(app => app.tags));
+    const uniqueTags = [...new Set(allTags)];
+    
+    tagSelect.innerHTML = '<option value="">所有标签</option>';
+    uniqueTags.forEach(tag => {
+        const option = document.createElement('option');
+        option.value = tag;
+        option.textContent = tag;
+        tagSelect.appendChild(option);
+    });
 }
 
 // 创建Markdown内容加载器
@@ -332,22 +362,32 @@ function showList() {
         });
 };
 
-// 添加搜索功能
-function handleSearch() {
-    const search = document.getElementById('search-input').value.toLowerCase();
+//搜索功能
+function handleSearch(searchTerm = '', selectedTags = '') {
     const container = document.getElementById('app-list');
     
-    const filteredApps = apps.filter(app => app.name.toLowerCase().includes(search));
+    const filteredApps = apps.filter(app => {
+        const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
+        const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+        const selectedTagMatch = selectedTags ? app.tags.includes(selectedTags) : true;
+        
+        return (nameMatch || descriptionMatch || tagsMatch) && selectedTagMatch;
+    });
+
     container.innerHTML = filteredApps.map(app => `
-    <div class="app-card" onclick="showDetail(${app.id})">
-        <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
-        <div class="app-card-content">
-            <h2>${app.name}</h2>
-            <p class="app-brief">${app.brief}</p>
-            <small>当前版本: ${app.version}</small>
+        <div class="app-card" onclick="showDetail(${app.id})">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <div class="app-card-content">
+                <h2>${app.name}</h2>
+                <p class="app-brief">${app.brief}</p>
+                <small>当前版本: ${app.version}</small>
+                <div class="app-tags">
+                    ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
+                </div>
+            </div>
         </div>
-    </div>
-`).join('');
+    `).join('');
 }
 
 // 防抖功能
