@@ -130,7 +130,7 @@ body::before {
 #toggle-particles-btn {
     position: fixed;
     bottom: 2rem;
-    left: 2rem;
+    right: 2rem;
     background: var(--gradient-primary);
     color: white;
     border: none;
@@ -365,7 +365,7 @@ body::before {
 /* ========== 应用详情页 ========== */
 #scroll-top-btn {
     position: fixed;
-    bottom: 2rem;
+    bottom: 4rem;
     right: 2rem;
     background: var(--gradient-primary);
     color: var(--primary-text);
