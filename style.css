@@ -544,7 +544,6 @@ body::before {
     margin: 1rem auto;  /* 上下外边距为1rem，左右自动居中 */
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-    background: rgba(255, 255, 255, 0.95); /* 图片加载前的背景 */
 }
 
 /* 图片加载前的占位符 */
