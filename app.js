@@ -113,6 +113,22 @@ document.getElementById('search-input').addEventListener('input', () => {
     handleSearch();
 });
 
+function toggleDropdown() {
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    if (dropdownMenu.style.display === 'block') {
+        dropdownMenu.style.display = 'none';
+    } else {
+        dropdownMenu.style.display = 'block';
+    }
+}
+
+function selectOption(option) {
+    const selectedOption = document.querySelector('.selected-option');
+    selectedOption.textContent = option;
+    document.getElementById('dropdown-menu').style.display = 'none';
+    handleSearch(); // 更新应用列表
+}
+
 // 初始化应用列表
 function initAppList() {
     try {
