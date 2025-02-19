@@ -465,7 +465,7 @@ body::before {
 /* detail-container 样式 */
 .detail-container {
     display: grid;
-    grid-template-columns: 1fr 280px; /* 调整列宽比例，左侧内容区更宽 */
+    grid-template-columns: 7fr 3fr; /* 调整列宽比例，左侧内容区更宽 */
     gap: 2rem;
     margin-top: 1rem;
     max-width: 1200px; /* 设置最大宽度 */
