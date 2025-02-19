@@ -29,3 +29,24 @@ if (container) {
         }
     });
 }
+
+// 节流函数
+function throttle(fn, delay) {
+    let last = 0;
+    return () => {
+        const now = new Date().getTime();
+        if (now - last > delay) {
+            last = now;
+            fn();
+        }
+    };
+}
+
+// 监听滚动事件
+window.addEventListener('scroll', throttle(() => {
+    if (window.pageYOffset > 200) {
+        scrollBtn.style.display = 'block';
+    } else {
+        scrollBtn.style.display = 'none';
+    }
+}, 200));
