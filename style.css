@@ -280,6 +280,55 @@ body::before {
 
 /**/
 /* 下拉菜单样式 */
+.custom-select-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select {
+    padding: 0.6rem 1.2rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--primary-text);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-select:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    margin-top: 0.5rem;
+    display: none;
+    z-index: 100;
+}
+
+.menu-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.custom-select-container:hover .dropdown-menu {
+    display: block;
+}
+
 .tag-select {
     appearance: none; /* 去掉默认样式 */
     background: none;
