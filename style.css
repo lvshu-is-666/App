@@ -527,7 +527,9 @@ body::before {
     line-height: 1.8;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    max-width: 100%;   /* 确保宽度不超过容器 */
+    width: 100%; /* 确保 Markdown 容器宽度自适应 */
+    max-width: 1200px; /* 设置最大宽度 */
+    margin: 0 auto; /* 水平居中 */
 }
 
 :root[style*="--current-theme: dark"] .markdown-content {
@@ -716,6 +718,11 @@ body::before {
 
     .search-container {
         margin-bottom: 2rem;
+    }
+
+    .markdown-content img {
+        width: 100%;    /* 图片宽度自适应 */
+        height: auto;   /* 高度自动调整 */
     }
 
 }
