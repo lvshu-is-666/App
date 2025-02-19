@@ -22,7 +22,7 @@ const apps = [
         name: "谜之工具箱",
         brief: "你想要的工具这里都有",
         version: "3.6.0",
-        download: {},
+        download: {mobile:"#小程序://工具箱/Z0pJuFQYxJb5c2J"},
         supportedDevices: ["windows", "mobile"],
         icon: "icon/谜之工具箱.png",
         description: "details/谜之工具箱.md",
