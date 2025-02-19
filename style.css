@@ -601,13 +601,14 @@ body::before {
     border-collapse: collapse;
     margin: 1rem 0;
     overflow-x: auto; /* 水平滚动 */
+    border: 2px solid var(--primary-text);
 }
 
 .markdown-content th,
 .markdown-content td {
     border: 1px solid var(--secondary-text);
     padding: 0.5rem;
-    text-align: left;
+    text-align: center;
 }
 
 .markdown-content th {
