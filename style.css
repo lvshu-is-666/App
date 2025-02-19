@@ -141,7 +141,7 @@ body::before {
 
 .gradient-navbar .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 1rem;
     padding: 0 2rem;
     display: flex;
     justify-content: space-between;
@@ -151,7 +151,7 @@ body::before {
 }
 
 .gradient-navbar h1 {
-    color: var(--primary-text);
+    color: var(--dark-primary-text);
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -168,7 +168,6 @@ body::before {
     color: rgba(255,255,255,0.9);
     text-decoration: none;
     transition: opacity 0.3s ease;
-    color: var(--primary-text);
 }
 
 .nav-link:hover {
