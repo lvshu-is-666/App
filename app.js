@@ -85,12 +85,12 @@ const apps = [
 ];
 
 // 获取 detail-sidebar 元素
-const sidebar = document.querySelector('.detail-sidebar');
+//const sidebar = document.querySelector('.detail-sidebar');
 
 // 监听滚动事件
-window.addEventListener('scroll', () => {
-    sidebar.style.top = '120px'; // 设置距离页面顶部的距离
-});
+//window.addEventListener('scroll', () => {
+//    sidebar.style.top = '120px'; // 设置距离页面顶部的距离
+//});
 
 // 滚动置顶功能
 function scrollTop() {
