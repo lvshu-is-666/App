@@ -92,9 +92,9 @@ async function showDetail(appId) {
                     <div class="other-downloads">
                         <span>其他下载选项：</span>
                         <a href="${app.download.windows}" 
-                           class="download-link">Windows</a>
+                           class="download-link"><i class="fa-solid fa-desktop"></i> Windows</a>
                         <a href="${app.download.mobile}" 
-                           class="download-link">移动</a>
+                           class="download-link"><i class="fa-solid fa-mobile-screen-button"></i> 移动</a>
                     </div>
                 </div>
             </div>
