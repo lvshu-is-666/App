@@ -90,46 +90,9 @@ const apps = [
     }
 ];
 
-// 增强的错误处理
-function initAppList() {
-    try {
-        console.log("正在初始化应用列表...");
-        const container = document.getElementById('app-list');
-        if (!container) throw new Error('找不到列表容器元素');
-        
-        container.innerHTML = apps.map(app => `
-            <div class="app-card" onclick="showDetail(${app.id})">
-                <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
-                <div class="app-card-content">
-                    <h2>${app.name}</h2>
-                    <p class="app-brief">${app.brief}</p>  <!-- 显示简短描述 -->
-                    <small>当前版本: ${app.version}</small>
-                    <div class="app-tags">
-                        ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
-                    </div>
-                </div>
-            </div>
-        `).join('');
-        
-        console.log("应用列表初始化完成");
-
-        // 初始化搜索功能
-        const searchInput = document.getElementById('search-input');
-        searchInput.addEventListener('input', debounce(() => {
-            const searchTerm = searchInput.value.trim();
-            const selectedTags = document.getElementById('category-select').value;
-            handleSearch(searchTerm, selectedTags);
-        }, 300));
-        // 动态生成分类下拉菜单
-        generateTagOptions();
-    } catch (error) {
-        console.error("初始化失败:", error);
-        document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
-    }
-}
-
+// 初始化标签筛选下拉菜单
 function generateTagOptions() {
-    const tagSelect = document.getElementById('category-select');
+    const tagSelect = document.getElementById('tag-select');
     const allTags = [].concat(...apps.map(app => app.tags));
     const uniqueTags = [...new Set(allTags)];
     
@@ -140,6 +103,46 @@ function generateTagOptions() {
         option.textContent = tag;
         tagSelect.appendChild(option);
     });
+}
+
+// 初始化应用列表
+function initAppList() {
+    try {
+        console.log("正在初始化应用列表...");
+        const container = document.getElementById('app-list');
+        if (!container) throw new Error('找不到列表容器元素');
+
+        container.innerHTML = apps.map(app => `
+        <div class="app-card" onclick="showDetail(${app.id})">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <div class="app-card-content">
+                <h2>${app.name}</h2>
+                <p class="app-brief">${app.brief}</p>  <!-- 显示简短描述 -->
+                <small>当前版本: ${app.version}</small>
+            </div>
+        </div>
+    `).join('');
+        
+        console.log("应用列表初始化完成");
+
+        // 初始化搜索功能
+        const searchInput = document.getElementById('search-input');
+        const tagSelect = document.getElementById('tag-select');
+
+        searchInput.addEventListener('input', debounce(() => {
+            handleSearch(searchInput.value.trim(), tagSelect.value);
+        }, 300));
+
+        tagSelect.addEventListener('change', () => {
+            handleSearch(searchInput.value.trim(), tagSelect.value);
+        });
+
+        // 生成标签筛选下拉菜单
+        generateTagOptions();
+    } catch (error) {
+        console.error("初始化失败:", error);
+        document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
+    }
 }
 
 // 创建Markdown内容加载器
@@ -161,6 +164,9 @@ async function showDetail(appId) {
             <!-- 左侧内容区 -->
             <div class="detail-main">
                 <h1>${app.name}</h1>
+                <div class="app-tags">
+                    ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
+                </div>
                 <!-- 分享按钮 -->
                 <div class="share-container">
                     <button class="share-btn" onclick="copyShareLink(${app.id})">
@@ -363,15 +369,16 @@ function showList() {
 };
 
 //搜索功能
-function handleSearch(searchTerm = '', selectedTags = '') {
+// 修改搜索与标签筛选逻辑
+function handleSearch(searchTerm = '', selectedTag = '') {
     const container = document.getElementById('app-list');
     
     const filteredApps = apps.filter(app => {
         const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
         const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
         const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-        const selectedTagMatch = selectedTags ? app.tags.includes(selectedTags) : true;
-        
+        const selectedTagMatch = selectedTag ? app.tags.includes(selectedTag) : true;
+
         return (nameMatch || descriptionMatch || tagsMatch) && selectedTagMatch;
     });
 
@@ -382,9 +389,6 @@ function handleSearch(searchTerm = '', selectedTags = '') {
                 <h2>${app.name}</h2>
                 <p class="app-brief">${app.brief}</p>
                 <small>当前版本: ${app.version}</small>
-                <div class="app-tags">
-                    ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
-                </div>
             </div>
         </div>
     `).join('');
