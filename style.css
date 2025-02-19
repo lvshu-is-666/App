@@ -278,35 +278,44 @@ body::before {
     transition: background 0.3s ease;
 }
 
-.tag-select-container:hover {
+/**/
+/* 下拉菜单样式 */
+.tag-select {
+    appearance: none; /* 去掉默认样式 */
+    background: none;
+    color: var(--primary-text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    transition: background 0.3s ease;
+}
+
+.tag-select:hover {
     background: rgba(255, 255, 255, 0.9);
 }
 
-.tag-icon {
-    margin-right: 0.5rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: var(--primary-text);
+.tag-select:focus {
+    outline: none;
+    border-color: var(--gradient-primary);
 }
 
-.tag-select {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: none;
-    color: var(--primary-text);
-    font-size: 1rem;
-    cursor: pointer;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 1rem;
-    padding-right: 2rem;
-}
-
+/* 自定义下拉箭头 */
 .tag-select::-ms-expand {
-    display: none;
+    display: none; /* 隐藏默认箭头 */
+}
+
+.tag-select-container::after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z"/></svg>');
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-text);
+    pointer-events: none;
 }
 
 .app-card {
