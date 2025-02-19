@@ -377,9 +377,12 @@ function showList() {
     document.getElementById('app-detail-container').style.display = 'none';
 }
 
-// 启动初始化
- window.onload = () => {
-    // 获取 canvas 元素和上下文
+// 粒子效果开关
+let isParticleEffectActive = true;
+
+// 初始化粒子效果
+function initParticleEffect() {
+// 获取 canvas 元素和上下文
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -463,7 +466,6 @@ function showList() {
             particle.update();
         });
     }
-
     // 窗口大小调整时更新 canvas 尺寸
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
@@ -472,9 +474,32 @@ function showList() {
 
     // 启动动画
     animate();
-     
+}
+
+// 切换粒子效果
+function toggleParticleEffect() {
+    isParticleEffectActive = !isParticleEffectActive;
+
+    if (isParticleEffectActive) {
+        const canvas = document.getElementById('background-canvas');
+        initParticleEffect();
+    } else {
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // 更新按钮图标
+    const button = document.getElementById('toggle-particles-btn');
+    button.style.backgroundColor = isParticleEffectActive ? 'var(--gradient-primary)' : 'var(--gradient-secondary)';
+}
+
+// 启动初始化
+window.onload = () => {
     initAppList();
     initTheme(); // 初始化主题
+initSearch();
+     initParticleEffect(); // 初始化粒子效果
     parseUrlParams(); // 初始化时解析 URL 参数
         document.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightBlock(block);
