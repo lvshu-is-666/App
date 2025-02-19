@@ -335,7 +335,6 @@ body::before {
     flex: 1;
     margin-right: 1rem;
     color: var(--primary-text);
-    margin-bottom: 1rem;
 }
 
 /* 深色模式标题样式 */
@@ -521,6 +520,10 @@ body::before {
     margin-top: 2rem;
     margin-bottom: 2rem;
     max-width: 100%;   /* 确保宽度不超过容器 */
+}
+
+:root[style*="--current-theme: dark"] .markdown-content {
+    color: var(--dark-primary-text);
 }
 
 /* 图片自适应 */
