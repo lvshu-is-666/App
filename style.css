@@ -237,6 +237,7 @@ body::before {
     align-items: center;
     gap: 1rem;
     margin-top: 2rem;
+    background: var(--gradient-card);
 }
 
 .search-input-container {
@@ -244,7 +245,7 @@ body::before {
     flex: 1;
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--gradient-card);
     border-radius: 24px;
     padding: 0.8rem 1.2rem;
     border: 1px solid var(--border-color);
@@ -269,7 +270,7 @@ body::before {
 
 .tag-select-container {
     position: relative;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--gradient-card);
     border-radius: 24px;
     padding: 0.8rem 1.2rem;
     border: 1px solid var(--border-color);
