@@ -90,20 +90,65 @@ const apps = [
     }
 ];
 
-function toggleDropdown() {
-    const dropdownMenu = document.getElementById('dropdown-menu');
-    if (dropdownMenu.style.display === 'block') {
-        dropdownMenu.style.display = 'none';
-    } else {
-        dropdownMenu.style.display = 'block';
+// 动态生成标签选项
+function generateTagOptions() {
+    const tagSelect = document.getElementById('tag-select');
+    if (tagSelect) {
+        const allTags = [].concat(...window.appData.map(app => app.tags));
+        const uniqueTags = [...new Set(allTags)];
+        
+        tagSelect.innerHTML = '<option value="">所有标签</option>';
+        uniqueTags.forEach(tag => {
+            const option = document.createElement('option');
+            option.value = tag;
+            option.textContent = tag;
+            tagSelect.appendChild(option);
+        });
     }
 }
 
-function selectOption(option) {
-    const selectedOption = document.querySelector('.selected-option');
-    selectedOption.textContent = option;
-    document.getElementById('dropdown-menu').style.display = 'none';
-    handleSearch(); // 更新应用列表
+// 搜索处理函数
+function handleSearch() {
+    const searchTerm = document.getElementById('search-input').value.trim();
+    const selectedTag = document.getElementById('tag-select').value;
+    
+    const filteredApps = window.appData.filter(app => {
+        const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
+        const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+        const selectedTagMatch = selectedTag ? app.tags.includes(selectedTag) : true;
+        
+        return (nameMatch || descriptionMatch || tagsMatch) && selectedTagMatch;
+    });
+
+    document.getElementById('app-list').innerHTML = filteredApps.map(app => `
+        <div class="app-card" onclick="showDetail(${app.id})">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <div class="app-card-content">
+                <h2>${app.name}</h2>
+                <p class="app-brief">${app.brief}</p>
+                <small>当前版本: ${app.version}</small>
+            </div>
+        </div>
+    `).join('');
+}
+
+// 初始化下拉菜单事件
+function initDropdown() {
+    const tagSelect = document.getElementById('tag-select');
+    if (tagSelect) {
+        tagSelect.addEventListener('change', () => {
+            handleSearch();
+        });
+    }
+}
+
+// 初始化搜索框事件
+function initSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce(handleSearch, 300));
+    }
 }
 
 // 初始化应用列表
@@ -113,7 +158,7 @@ function initAppList() {
         const container = document.getElementById('app-list');
         if (!container) throw new Error('找不到列表容器元素');
 
-        container.innerHTML = apps.map(app => `
+        container.innerHTML = window.appData.map(app => `
         <div class="app-card" onclick="showDetail(${app.id})">
             <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
             <div class="app-card-content">
@@ -125,24 +170,40 @@ function initAppList() {
     `).join('');
         
         console.log("应用列表初始化完成");
-
-        // 初始化搜索功能
-        const searchInput = document.getElementById('search-input');
-        const tagSelect = document.getElementById('tag-select');
-
-        searchInput.addEventListener('input', debounce(() => {
-            handleSearch(searchInput.value.trim(), tagSelect.value);
-        }, 300));
-
-        tagSelect.addEventListener('change', () => {
-            handleSearch(searchInput.value.trim(), tagSelect.value);
-        });
-
     } catch (error) {
         console.error("初始化失败:", error);
         document.body.innerHTML = `<h2 style="color:red">初始化错误: ${error.message}</h2>`;
     }
 }
+
+// 初始化主题
+function initTheme() {
+    const storedTheme = localStorage.getItem('appTheme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+    document.documentElement.style.setProperty('--current-theme', currentTheme);
+    
+    // 根据主题显示图标
+    if (currentTheme === 'dark') {
+        document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'none');
+        document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'inline');
+    } else {
+        document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'none');
+        document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'inline');
+    }
+}
+
+// 启动初始化
+document.addEventListener('DOMContentLoaded', () => {
+    initAppList();
+    initTheme();
+    initSearch();
+    initDropdown();
+    generateTagOptions();
+    window.appData = apps; // 将应用数据存储到全局变量
+});
+
 
 // 创建Markdown内容加载器
 async function loadFile(file) {
@@ -367,33 +428,6 @@ function showList() {
         });
 };
 
-//搜索功能
-// 修改搜索与标签筛选逻辑
-function handleSearch() {
-    const searchTerm = document.getElementById('search-input').value.trim();
-    const selectedTag = document.getElementById('tag-select').value;
-    
-    const filteredApps = apps.filter(app => {
-        const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
-        const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-        const selectedTagMatch = selectedTag ? app.tags.includes(selectedTag) : true;
-        
-        return (nameMatch || descriptionMatch || tagsMatch) && selectedTagMatch;
-    });
-
-    document.getElementById('app-list').innerHTML = filteredApps.map(app => `
-        <div class="app-card" onclick="showDetail(${app.id})">
-            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
-            <div class="app-card-content">
-                <h2>${app.name}</h2>
-                <p class="app-brief">${app.brief}</p>
-                <small>当前版本: ${app.version}</small>
-            </div>
-        </div>
-    `).join('');
-}
-
 // 防抖功能
 function debounce(fn, delay) {
     let timeout;
@@ -429,29 +463,6 @@ function toggleTheme() {
     particles.forEach(particle => {
         particle.color = getRandomGradientColor();
     });
-}
-
-// 初始化主题
-function initTheme() {
-    const storedTheme = localStorage.getItem('appTheme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    let currentTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
-    document.documentElement.style.setProperty('--current-theme', currentTheme);
-
-    // 更新粒子颜色
-    particles.forEach(particle => {
-        particle.color = getRandomGradientColor();
-    });
-    
-    // 根据主题显示图标
-    if (currentTheme === 'dark') {
-        document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'none');
-        document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'inline');
-    } else {
-        document.querySelectorAll('.theme-toggle-btn .dark-icon').forEach(e => e.style.display = 'none');
-        document.querySelectorAll('.theme-toggle-btn .light-icon').forEach(e => e.style.display = 'inline');
-    }
 }
 
 // 解析 URL 参数
