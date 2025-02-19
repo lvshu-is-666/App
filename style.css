@@ -82,7 +82,7 @@ body {
     min-height: 100vh;
     font-family: 'Segoe UI', system-ui, sans-serif;
     line-height: 1.6;
-    /*position: relative;*/
+    position: relative;
     overflow-x: hidden;
     transition: background 0.5s ease;
 }
@@ -219,7 +219,7 @@ body::before {
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-card);
-    /*position: relative;*/
+    position: relative;
     transition: background 0.5s ease;
 }
 
@@ -465,7 +465,7 @@ body::before {
 /* detail-container 样式 */
 .detail-container {
     display: grid;
-    grid-template-columns: 7fr 3fr; /* 调整列宽比例，左侧内容区更宽 */
+    grid-template-columns: 1fr 280px; /* 调整列宽比例，左侧内容区更宽 */
     gap: 2rem;
     margin-top: 1rem;
     max-width: 1200px; /* 设置最大宽度 */
@@ -510,7 +510,7 @@ body::before {
     border-radius: var(--border-radius);
     padding: 2.5rem;
     box-shadow: var(--shadow-card);
-    /*overflow: hidden;  防止内容溢出 */
+    overflow: hidden; /* 防止内容溢出 */
     max-width: 100%;   /* 确保宽度不超过容器 */
     flex: 1;           /* 确保内容区自动占据剩余空间 */
 }
