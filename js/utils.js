@@ -46,9 +46,9 @@ function throttle(fn, delay) {
 
 // 监听滚动事件
 window.addEventListener('scroll', throttle(() => {
-    if (window.pageYOffset > 200) {
+    if (window.pageYOffset > 500) {
         scrollBtn.style.display = 'block';
     } else {
         scrollBtn.style.display = 'none';
     }
-}, 200));
+}, 500));
