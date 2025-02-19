@@ -718,13 +718,6 @@ body::before {
         margin-bottom: 2rem;
     }
 
-    .back-and-share-container {
-        flex-direction: row-reverse;
-        justify-content: flex-start;
-    }
-    .gradient-back-btn {
-        margin-right: auto;
-    }
 }
 
 @media (max-width: 480px) {
