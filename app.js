@@ -194,11 +194,11 @@ async function showDetail(appId) {
                 <h1 class="app-title">${app.name}</h1>
                 <div class="app-meta">
                     <div class="tags-section">
-                        ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i>${tag}</span>`).join('')}
+                        ${app.tags.map(tag => `<span class="tag"><i class="fa-solid fa-hashtag"></i> ${tag}</span>`).join('')}
                     </div>
                     <div class="share-section">
                         <button class="share-btn" onclick="copyShareLink(${app.id})">
-                            <i class="fas fa-share-alt"></i> 分享
+                            <i class="fa-solid fa-share-from-square"></i> 分享
                         </button>
                     </div>
                 </div>
