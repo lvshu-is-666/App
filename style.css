@@ -584,7 +584,7 @@ body::before {
 
 .markdown-content ul,
 .markdown-content ol{
-    padding-left: 2rem; /* 列表左侧缩进 */
+    padding-left: 1rem; /* 列表左侧缩进 */
     margin-bottom: 1.5rem;
     margin: 1rem 0;
     list-style-type: '➤';
@@ -592,7 +592,7 @@ body::before {
 
 .markdown-content li {
     margin: 0.8rem 0;
-    padding-left: 2rem !important;
+    padding-left: 1rem;
 }
 
 .markdown-content p {
