@@ -76,7 +76,7 @@ async function showDetail(appId) {
                     ${isSupported ? `
                         <button class="download-btn" 
                                 onclick="location.href='${app.download[deviceType]}'">
-                            <i class="fa-solid fa-download"></i> 下载 ${app.version} 版本
+                            <i class="fa-solid fa-download"></i> 下载
                         </button>
                     ` : `
                         <div class=".unsupported-device">
@@ -91,10 +91,15 @@ async function showDetail(appId) {
                     ` : ''}
                     <div class="other-downloads">
                         <span>其他下载选项：</span>
+                        ${app.download.windows ? `
                         <a href="${app.download.windows}" 
                            class="download-link"><i class="fa-solid fa-desktop"></i> Windows</a>
+                    ` : ''}
+                    ${app.download.mobile ? `
                         <a href="${app.download.mobile}" 
                            class="download-link"><i class="fa-solid fa-mobile-screen-button"></i> 移动</a>
+                    ` : ''}
+                        
                     </div>
                 </div>
             </div>
