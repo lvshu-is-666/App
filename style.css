@@ -543,7 +543,6 @@ body::before {
     display: block;    /* 改善图片在容器中的布局 */
     margin: 1rem auto;  /* 上下外边距为1rem，左右自动居中 */
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
 
 /* 图片加载前的占位符 */
