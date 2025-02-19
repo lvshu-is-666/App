@@ -237,7 +237,6 @@ body::before {
     align-items: center;
     gap: 1rem;
     margin-top: 2rem;
-    background: var(--gradient-card);
 }
 
 .search-input-container {
@@ -256,7 +255,7 @@ body::before {
     width: 100%;
     padding: 0;
     margin: 0;
-    background: none;
+    /*background: none;*/
     border: none;
     outline: none;
     color: var(--primary-text);
