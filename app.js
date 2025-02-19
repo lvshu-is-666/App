@@ -479,12 +479,12 @@ function initParticleEffect() {
         canvas.height = window.innerHeight;
     });
 
-    // 启动动画
-    animationFrameId = requestAnimationFrame(animate);
-
     // 初始化按钮样式
     const button = document.getElementById('toggle-btn');
     button.classList.add(isParticleEffectActive ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off');
+
+    // 启动动画
+    animationFrameId = requestAnimationFrame(animate);
 }
 
 // 切换粒子效果
