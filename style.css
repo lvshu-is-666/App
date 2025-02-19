@@ -330,9 +330,17 @@ body::before {
     margin-bottom: 1rem;
 }
 
+/* 应用详情标题样式 */
 .app-title {
     flex: 1;
     margin-right: 1rem;
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+}
+
+/* 深色模式标题样式 */
+:root[style*="--current-theme: dark"] .app-title {
+    color: var(--dark-primary-text);
 }
 
 .app-meta {
