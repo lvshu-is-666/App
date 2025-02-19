@@ -1,4 +1,21 @@
+// 滚动置顶功能
+function scrollTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 
+// 显示和隐藏置顶按钮
+let scrollBtn = document.getElementById('scroll-top-btn');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 200) {
+        scrollBtn.style.display = 'block';
+    } else {
+        scrollBtn.style.display = 'none';
+    }
+});
 
 // 初始化 marked 支持表格
 marked.setOptions({
