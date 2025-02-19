@@ -563,30 +563,6 @@ body::before {
     padding: 1rem;
 }
 
-.download-btn {
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 200px;
-    margin: 1rem auto;
-}
-
-.download-btn:hover {
-    background: var(--gradient-secondary);
-    animation: btn-shine 3s infinite;
-}
-
-@keyframes btn-shine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
 .unsupported-device {
     background: var(--gradient-secondary);
     color: white;
@@ -638,7 +614,7 @@ body::before {
     margin-right: 0.5rem;
 }
 
-/*.download-btn {
+.download-btn {
     background: var(--gradient-primary);
     color: white;
     border: none;
@@ -678,7 +654,7 @@ body::before {
 .download-btn:hover {
     background: var(--gradient-secondary);
     transform: scale(1.02);
-}*/
+}
 
 /* ============== Markdown 内容样式 ================= */
 .markdown-content {
