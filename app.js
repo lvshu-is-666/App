@@ -490,11 +490,15 @@ function toggleParticleEffect() {
     // 更新按钮图标和样式
     const button = document.getElementById('toggle-particles-btn');
     button.style.backgroundColor = isParticleEffectActive ? 'var(--gradient-primary)' : 'var(--gradient-secondary)';
-    
-    // 清除画布
-    const canvas = document.getElementById('background-canvas');
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 如果粒子效果关闭，重置画布
+    if (!isParticleEffectActive) {
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else {
+        initParticleEffect(); // 重新启动粒子效果
+    }
 }
 
 // 窗口大小调整时更新 canvas 尺寸
