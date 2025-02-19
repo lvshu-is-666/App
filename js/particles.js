@@ -1,3 +1,5 @@
+
+
 // 粒子效果开关
 let isParticleEffectActive = true;
 let animationFrameId = null; // 存储动画帧 ID
@@ -100,6 +102,12 @@ function initParticleEffect() {
         canvas.height = window.innerHeight;
     });
 
+    // 恢复粒子效果状态
+    const storedState = localStorage.getItem('particleEffectState');
+    if (storedState !== null) {
+        isParticleEffectActive = JSON.parse(storedState);
+    }
+
     // 初始化按钮样式
     const button = document.getElementById('toggle-btn');
     button.classList.add(isParticleEffectActive ? 'fa-toggle-on' : 'fa-toggle-off');
@@ -130,4 +138,7 @@ function toggleParticleEffect() {
     } else {
         initParticleEffect(); // 重新启动粒子效果
     }
+
+    // 保存粒子效果状态到 localStorage
+    localStorage.setItem('particleEffectState', isParticleEffectActive);
 }
