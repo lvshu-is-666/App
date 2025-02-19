@@ -359,6 +359,10 @@ body::before {
     color: var(--primary-text);
 }
 
+#scroll-top-btn:active {
+    transform: scale(0.95);
+}
+
 .header-section {
     display: flex;
     align-items: center;
