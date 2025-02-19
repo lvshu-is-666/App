@@ -54,6 +54,7 @@
     --gradient-secondary: linear-gradient(135deg, #184868 0%, #103a56 100%);
     --gradient-bg: linear-gradient(150deg, #0b2914 0%, #03270e 100%);
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.13) 100%);
+    --gradient-text: linear-gradient(135deg, #e7ffef 0%, #d4fbe3 100%);
     --primary-text: #fff;
     --secondary-text: #aaa;
     --card-bg: rgba(255,255,255,0.25);
@@ -576,10 +577,6 @@ body::before {
     margin: 2rem 0 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #eee;
-}
-
-:root[style*="--current-theme: dark"] .markdown-content h2 {
-    background: var(--dark-gradient-text);
 }
 
 .markdown-content ul,
