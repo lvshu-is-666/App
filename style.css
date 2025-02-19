@@ -151,6 +151,12 @@ body::before {
     border: none;
 }
 
+:root[style*="--current-theme: dark"] .gradient-navbar .container {
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 0px 0px;
+    border: none;
+}
+
 .gradient-navbar h1 {
     color: var(--dark-primary-text);
     font-size: 1.4rem;
