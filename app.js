@@ -90,35 +90,15 @@ const apps = [
     }
 ];
 
-// 动态生成标签选项
-function generateTagOptions() {
-    const tagSelect = document.getElementById('tag-select');
-    if (tagSelect) {
-        const allTags = [].concat(...window.appData.map(app => app.tags));
-        const uniqueTags = [...new Set(allTags)];
-        
-        tagSelect.innerHTML = '<option value="">所有标签</option>';
-        uniqueTags.forEach(tag => {
-            const option = document.createElement('option');
-            option.value = tag;
-            option.textContent = tag;
-            tagSelect.appendChild(option);
-        });
-    }
-}
-
 // 搜索处理函数
 function handleSearch() {
     const searchTerm = document.getElementById('search-input').value.trim();
-    const selectedTag = document.getElementById('tag-select').value;
     
-    const filteredApps = window.appData.filter(app => {
+    const filteredApps = apps.filter(app => {
         const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
         const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
-        const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-        const selectedTagMatch = selectedTag ? app.tags.includes(selectedTag) : true;
-        
-        return (nameMatch || descriptionMatch || tagsMatch) && selectedTagMatch;
+        // 去掉标签筛选逻辑
+        return nameMatch || descriptionMatch;
     });
 
     document.getElementById('app-list').innerHTML = filteredApps.map(app => `
@@ -131,16 +111,6 @@ function handleSearch() {
             </div>
         </div>
     `).join('');
-}
-
-// 初始化下拉菜单事件
-function initDropdown() {
-    const tagSelect = document.getElementById('tag-select');
-    if (tagSelect) {
-        tagSelect.addEventListener('change', () => {
-            handleSearch();
-        });
-    }
 }
 
 // 初始化搜索框事件
@@ -158,7 +128,7 @@ function initAppList() {
         const container = document.getElementById('app-list');
         if (!container) throw new Error('找不到列表容器元素');
 
-        container.innerHTML = window.appData.map(app => `
+        container.innerHTML = apps.map(app => `
         <div class="app-card" onclick="showDetail(${app.id})">
             <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
             <div class="app-card-content">
@@ -199,9 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initAppList();
     initTheme();
     initSearch();
-    initDropdown();
-    generateTagOptions();
-    window.appData = apps; // 将应用数据存储到全局变量
 });
 
 
