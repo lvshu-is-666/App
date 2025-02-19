@@ -580,9 +580,13 @@ body::before {
     border-bottom: 2px solid #eee;
 }
 
+:root[style*="--current-theme: dark"] .markdown-content h2 {
+    background: var(--dark-gradient-text);
+}
+
 .markdown-content ul,
 .markdown-content ol{
-    padding-left: 2rem !important; /* 列表左侧缩进 */
+    padding-left: 2rem; /* 列表左侧缩进 */
     margin-bottom: 1.5rem;
     margin: 1rem 0;
     list-style-type: '➤';
