@@ -92,13 +92,14 @@ const apps = [
 
 // 搜索处理函数
 function handleSearch() {
-    const searchTerm = document.getElementById('search-input').value.trim();
+    const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
     
     const filteredApps = apps.filter(app => {
-        const nameMatch = app.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const descriptionMatch = app.brief.toLowerCase().includes(searchTerm.toLowerCase());
-        // 去掉标签筛选逻辑
-        return nameMatch || descriptionMatch;
+        const nameMatch = app.name.toLowerCase().includes(searchTerm);
+        const descriptionMatch = app.brief.toLowerCase().includes(searchTerm);
+        const tagsMatch = app.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        
+        return nameMatch || descriptionMatch || tagsMatch;
     });
 
     document.getElementById('app-list').innerHTML = filteredApps.map(app => `
