@@ -14,7 +14,7 @@ const container = document.getElementById('app-detail'); // 替换为实际的�
 
 if (container) {
     container.addEventListener('scroll', () => {
-        if (container.scrollTop > 200) {
+        if (container.scrollTop > 500) {
             scrollBtn.style.display = 'block';
         } else {
             scrollBtn.style.display = 'none';
@@ -22,7 +22,7 @@ if (container) {
     });
 } else {
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 200) {
+        if (window.pageYOffset > 500) {
             scrollBtn.style.display = 'block';
         } else {
             scrollBtn.style.display = 'none';
