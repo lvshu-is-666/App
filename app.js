@@ -40,7 +40,7 @@ const apps = [
     },
     {
         id: 2001,
-        name: "deepseek",
+        name: "DeepSeek",
         brief: "DeepSeek - 探索未至之境",
         version: "V3 / R1",
         download: "https://chat.deepseek.com/",
@@ -74,13 +74,35 @@ const apps = [
     {
         id: 3001,
         name: "地铁线路图绘制器",
-        brief: "一个线路图工具包项目",
+        brief: "一个线路图工具包项目(rmp)",
         version: "5.2.14",
         download: "https://railmapgen.github.io/rmp/",
         icon: "icon/rmp.png",
         description: "details/rmp.md",
         changelog: "log/rmp.md",
-        tags: ["工具", "交通", "模拟"]
+        tags: ["工具", "交通"]
+    },
+    {
+        id: 3002,
+        name: "GeoGebra",
+        brief: "以更聪明的方式讲授和学习数学",
+        version: "网页版",
+        download: "https://www.geogebra.org/download",
+        icon: "icon/geogebra.svg",
+        description: "details/geogebra.md",
+        changelog: "log/geogebra.md",
+        tags: ["工具", "学习"]
+    },
+    {
+        id: 3003,
+        name: "Desmos",
+        brief: "免费使用的精美数学工具组",
+        version: "网页版",
+        download: "https://www.desmos.com/calculator?lang=zh-CN",
+        icon: "https://www.desmos.com/assets/build/desmos-studio-pbc-IWAXZOF2.png",
+        description: "details/desmos.md",
+        changelog: "log/desmos.md",
+        tags: ["工具", "学习"]
     }
 ];
 
