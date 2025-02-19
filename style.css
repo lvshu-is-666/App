@@ -367,7 +367,8 @@ body::before {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--gradient-primary);
+    color: var(--primary-text);
     border: none;
     border-radius: 50%;
     width: 40px;
