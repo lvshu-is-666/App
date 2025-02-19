@@ -35,10 +35,14 @@
     <!-- 主内容区 -->
     <main class="gradient-background">
         <div class="container">
-            <!-- 搜索框 -->
+            <!-- 搜索与分类筛选 -->
             <div class="search-container">
-                <input type="text" id="search-input" placeholder="搜索应用...">
-                <!--<button class="search-btn"><i class="fas fa-search"></i></button>-->
+                <input type="text" id="search-input" placeholder="搜索应用或分类...">
+                <select id="category-select" class="category-select">
+                    <option value="">所有分类</option>
+                    <!-- 分类选项将根据应用数据动态生成 -->
+                </select>
+                <!-- <button class="search-btn"><i class="fas fa-search"></i></button> -->
             </div>
 
             <div id="app-list" class="app-grid"></div>
