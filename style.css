@@ -329,6 +329,10 @@ body::before {
     color: var(--primary-text);
 }
 
+.app-card-content small {
+    color: var(--primary-text);
+}
+
 /* ========== 应用详情页 ========== */
 .header-section {
     display: flex;
