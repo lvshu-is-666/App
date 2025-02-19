@@ -335,10 +335,21 @@ body::before {
     margin-right: 1rem;
 }
 
+.app-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
 .tags-section {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-right: auto;
+}
+
+.share-section {
+    margin-left: auto;
 }
 
 /* 分享按钮样式 */
