@@ -1,28 +1,5 @@
-// 滚动置顶功能
-function scrollTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
 
-// 显示和隐藏置顶按钮
-let scrollBtn = document.getElementById('scroll-top-btn');
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 200) {
-        scrollBtn.style.display = 'block';
-    } else {
-        scrollBtn.style.display = 'none';
-    }
-});
-
-// 初始化 marked 支持表格
-marked.setOptions({
-    gfm: true,
-    tables: true,
-    breaks: true
-});
 
 // 调试用初始化提示
 console.log("初始化开始...");
@@ -106,6 +83,52 @@ const apps = [
         tags: ["工具", "交通", "模拟"]
     }
 ];
+
+// 滚动置顶功能
+function scrollTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// 显示和隐藏置顶按钮
+let scrollBtn = document.getElementById('scroll-top-btn');
+
+// 节流函数
+function throttle(fn, delay) {
+    let last = 0;
+    return () => {
+        const now = new Date().getTime();
+        if (now - last > delay) {
+            last = now;
+            fn();
+        }
+    };
+}
+
+// 监听滚动事件
+window.addEventListener('scroll', throttle(() => {
+    if (window.pageYOffset > 200) {
+        scrollBtn.style.display = 'block';
+    } else {
+        scrollBtn.style.display = 'none';
+    }
+}, 200));
+
+// 确保 DOM 完全加载后再初始化
+document.addEventListener('DOMContentLoaded', () => {
+    // 隐藏按钮，直到用户开始滚动
+    scrollBtn.style.display = 'none';
+});
+
+// 初始化 marked 支持表格
+marked.setOptions({
+    gfm: true,
+    tables: true,
+    breaks: true
+});
+
 
 // 搜索处理函数
 function handleSearch() {
