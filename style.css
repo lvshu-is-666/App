@@ -359,6 +359,14 @@ body::before {
     margin-left: auto;
 }
 
+/* 返回和分享按钮容器 */
+.back-and-share-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
 /* 分享按钮样式 */
 .share-container {
     margin-top: 1rem;
@@ -708,6 +716,14 @@ body::before {
 
     .search-container {
         margin-bottom: 2rem;
+    }
+
+    .back-and-share-container {
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+    }
+    .gradient-back-btn {
+        margin-right: auto;
     }
 }
 
