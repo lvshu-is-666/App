@@ -1,3 +1,5 @@
+
+
 // 调试用初始化提示
 console.log("初始化开始...");
 
@@ -176,7 +178,7 @@ function initAppList() {
 
         container.innerHTML = apps.map(app => `
         <div class="app-card" onclick="showDetail(${app.id})">
-            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标" loading="lazy">
             <div class="app-card-content">
                 <h2>${app.name}</h2>
                 <p class="app-brief">${app.brief}</p>
