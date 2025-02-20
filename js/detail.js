@@ -93,7 +93,7 @@ async function showDetail(appId) {
                         <span>其他下载选项：</span>
                         ${app.download.windows ? `
                             <a href="${app.download.windows}" 
-                               class="download-link"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-windows"> </use></svg>  Windows</a>
+                               class="download-link"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-windows"></use></svg>　Windows</a>
                         ` : ''}
                         ${app.download.mobile ? `
                             <a href="${app.download.mobile}" 
