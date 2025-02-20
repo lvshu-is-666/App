@@ -39,7 +39,7 @@
             <div class="nav-menu">
                 <a href="https://lvshu-is-666.github.io/App/" class="nav-link">首页</a>
                 <a href="https://lvshu-is-666.github.io/App/about" class="nav-link">关于</a>
-                <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="切换主题">
+                <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="切换主题" title="切换主题">
                     <span class="light-icon">☀️</span>
                     <span class="dark-icon">🌙</span>
                 </button>
@@ -65,9 +65,9 @@
             </div>
         </div>
     </main>
-    <button id="toggle-particles-btn" onclick="toggleParticleEffect()"><i id="toggle-btn" class="fa-solid "></i></button>
+    <button id="toggle-particles-btn" onclick="toggleParticleEffect()" aria-label="切换粒子效果" title="切换粒子效果"><i id="toggle-btn" class="fa-solid "></i></button>
     <!-- 在 body 标签底部添加置顶按钮 -->
-    <button id="scroll-top-btn" onclick="scrollTop()"><a href="javascript:window.scrollTo(0,0)"><i class="fa-solid fa-arrow-up"></i></a></button>
+    <button id="scroll-top-btn" onclick="scrollTop()" aria-label="回到顶部" title="回到顶部"><a href="javascript:window.scrollTo(0,0)"><i class="fa-solid fa-arrow-up"></i></a></button>
     
     <script src="js/utils.js"></script>
     <script src="js/init.js"></script>
