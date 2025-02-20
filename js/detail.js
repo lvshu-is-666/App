@@ -79,7 +79,7 @@ async function showDetail(appId) {
                             <i class="fa-solid fa-download"></i> 下载
                         </button>
                     ` : `
-                        <div class=".unsupported-device">
+                        <div class="unsupported-device">
                             <p>很抱歉，该应用暂不支持您的设备，可尝试使用网页版</p>
                         </div>
                     `}
