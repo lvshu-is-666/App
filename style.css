@@ -564,20 +564,12 @@ body::before {
 }
 
 .unsupported-device {
-    background: var(--gradient-secondary);
-    color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    margin: 1rem;
+    color: var(--primary-text);
     text-align: center;
 }
 
 .unsupported-device p {
     margin: 0.5rem;
-}
-
-:root[style*="--current-theme: dark"] .unsupported-device p {
-    color: white;
 }
 
 .unsupported-device ul {
