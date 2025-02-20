@@ -77,7 +77,8 @@ function initParticleEffect() {
 
     // 创建粒子数组
     const particles = [];
-    for (let i = 0; i < 40; i++) {
+    const particleCount = window.innerWidth < 768 ? 20 : 40; // 移动端减少粒子
+    for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
 
