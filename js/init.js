@@ -93,6 +93,21 @@ const apps = [
         tags: ["人工智能(AI)大模型", "工具"]
     },
     {
+        id: 2004,
+        name: "ima.copilot",
+        brief: "ima.copilot智慧因你而生<br>会思考的知识库，开启搜读写新体验",
+        version: "DeepSeek R1",
+        download: {
+            windows: "https://ima.qq.com/",
+            mobile: "https://ima.qq.com/"
+        },
+        supportedDevices: ["windows", "mobile"],
+        icon: "https://qbnovel.qq.com/static/353eac8f6c283745f02dddb66e7c6ec4f1c3252f8e6146d4ccd07ffaf70cfddc",
+        description: "details/ima.md",
+        changelog: "log/ima.md",
+        tags: ["人工智能(AI)大模型", "工具", "办公"]
+    },
+    {
         id: 3001,
         name: "地铁线路图绘制器",
         brief: "一个线路图工具包项目(rmp)",
