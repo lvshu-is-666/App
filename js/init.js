@@ -139,8 +139,11 @@ function detectDeviceType() {
     if (navigator.userAgent.includes('Windows')) {
         return 'windows';
     }
-    if (navigator.userAgent.includes('Android')) {
-        return 'android';
+    if (navigator.userAgent.includes('Mac')) {
+        return 'mac';
+    }
+    if (navigator.userAgent.includes('Linux')) {
+        return 'linux';
     }
     if (window.innerWidth <= 768) {
         return 'mobile';
