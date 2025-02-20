@@ -80,7 +80,8 @@ async function showDetail(appId) {
                         </button>
                     ` : `
                         <div class="unsupported-device">
-                            <p>很抱歉，该应用暂不支持您的设备，可尝试使用网页版</p>
+                            <p>很抱歉，该应用暂不支持您的设备！</p>
+                            <p>可尝试使用网页版</p>
                         </div>
                     `}
                     ${app.webVersion ? `
