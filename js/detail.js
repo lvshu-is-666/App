@@ -80,7 +80,7 @@ async function showDetail(appId) {
                         </button>
                     ` : `
                         <div class=".unsupported-device">
-                            <p>很抱歉，该应用不支持您的设备！</p>
+                            <p>很抱歉，该应用暂不支持您的设备，可尝试使用网页版</p>
                         </div>
                     `}
                     ${app.webVersion ? `
@@ -92,14 +92,13 @@ async function showDetail(appId) {
                     <div class="other-downloads">
                         <span>其他下载选项：</span>
                         ${app.download.windows ? `
-                        <a href="${app.download.windows}" 
-                           class="download-link"><i class="fa-solid fa-desktop"></i> Windows</a>
-                    ` : ''}
-                    ${app.download.mobile ? `
-                        <a href="${app.download.mobile}" 
-                           class="download-link"><i class="fa-solid fa-mobile-screen-button"></i> 移动</a>
-                    ` : ''}
-                        
+                            <a href="${app.download.windows}" 
+                               class="download-link"><i class="fa-solid fa-computer"></i> Windows</a>
+                        ` : ''}
+                        ${app.download.mobile ? `
+                            <a href="${app.download.mobile}" 
+                               class="download-link"><i class="fa-solid fa-mobile"></i> mobile phone</a>
+                        ` : ''}
                     </div>
                 </div>
             </div>
