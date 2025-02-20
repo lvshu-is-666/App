@@ -136,11 +136,14 @@ const apps = [
 
 // 检测设备类型
 function detectDeviceType() {
-    if (window.innerWidth <= 768) {
-        return 'mobile';
-    }
     if (navigator.userAgent.includes('Windows')) {
         return 'windows';
+    }
+    if (navigator.userAgent.includes('Android')) {
+        return 'android';
+    }
+    if (window.innerWidth <= 768) {
+        return 'mobile';
     }
     return 'unknown';
 }
