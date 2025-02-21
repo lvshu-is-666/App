@@ -185,6 +185,20 @@ const apps = [
         description: "details/wps.md",
         changelog: "log/wps.md",
         tags: ["工具", "办公"]
+    },
+    {
+        id: 4004,
+        name: "腾讯会议",
+        brief: "腾讯会议 会开会",
+        download: {
+            windows: "https://meeting.tencent.com/download/",
+            mobile: "https://meeting.tencent.com/download/"
+        },
+        supportedDevices: ["windows", "mobile"],
+        icon: "https://pic1.zhimg.com/v2-c4528497b88120b843788611a6fd39b8.jpg",
+        description: "details/腾讯会议.md",
+        changelog: "log/腾讯会议.md",
+        tags: ["办公"]
     }
 ];
 
