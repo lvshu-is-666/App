@@ -49,7 +49,6 @@ const apps = [
         id: 2001,
         name: "DeepSeek",
         brief: "DeepSeek - 探索未至之境",
-        version: "V3 / R1",
         download: {
             mobile: "https://download.deepseek.com/app/"
         },
@@ -64,7 +63,6 @@ const apps = [
         id: 2002,
         name: "文心一言",
         brief: "文心一言，你的智能伙伴<br>有用、有趣、有温度",
-        version: "3.5 / 4.0",
         download: {
             windows: "https://xiaoyan-desktop.cdn.bcebos.com/wenxiaoyan_setup.exe",
             mobile: "https://www.wenxiaoyan.com/app"
@@ -80,7 +78,6 @@ const apps = [
         id: 2003,
         name: "Kimi",
         brief: "Kimi.ai - 会推理解析，能深度思考的AI助手",
-        version: "k1.5 长思考",
         download: {
             windows: "https://kimi-img.moonshot.cn/prod-chat-kimi/kimi/kimi-desktop-windows-x86.exe",
             mobile: "https://kimi.moonshot.cn/download/app"
@@ -96,7 +93,6 @@ const apps = [
         id: 2004,
         name: "ima.copilot",
         brief: "ima.copilot智慧因你而生<br>会思考的知识库，开启搜读写新体验",
-        version: "DeepSeek R1",
         download: {
             windows: "https://ima.qq.com/",
             mobile: "https://ima.qq.com/"
@@ -124,7 +120,6 @@ const apps = [
         id: 3002,
         name: "GeoGebra",
         brief: "以更聪明的方式讲授和学习数学",
-        version: "网页版",
         download: {
             windows: "https://www.geogebra.org/download",
             mobile: "https://www.geogebra.org/download"
@@ -140,7 +135,6 @@ const apps = [
         id: 3003,
         name: "Desmos",
         brief: "免费使用的精美数学工具组",
-        version: "网页版",
         download: {},
         supportedDevices: [],
         webVersion: "https://www.desmos.com/calculator?lang=zh-CN",
@@ -201,7 +195,9 @@ function initAppList() {
             <div class="app-card-content">
                 <h2>${app.name}</h2>
                 <p class="app-brief">${app.brief}</p>
-                <small>当前版本: ${app.version}</small>
+                ${app.version ? `
+                    <small>当前版本: ${app.version}</small>
+                ` : ''}
             </div>
         </div>
     `).join('');
