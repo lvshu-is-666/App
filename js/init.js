@@ -153,14 +153,22 @@ const apps = [
 
 // 检测设备类型
 function detectDeviceType() {
+    const UAParser = require('ua-parser-js');
+    const parser = new UAParser();
+    const result = parser.getResult();
+    
+    console.log(result.browser.name); // 打印浏览器名称
+    console.log(result.os.name);      // 打印操作系统名称
+    console.log(result.device.type);  // 打印设备类型
+    
     if (navigator.userAgent.includes('Windows')) {
         return 'windows';
     }
     if (navigator.userAgent.includes('Mac')) {
         return 'mac';
     }
-    if (navigator.userAgent.includes('Linux')) {
-        return 'linux';
+    if (navigator.userAgent.includes('Android')) {
+        return 'mobile';
     }
     if (window.innerWidth <= 768) {
         return 'mobile';
@@ -235,6 +243,9 @@ window.addEventListener('DOMContentLoaded', () => {
     initParticleEffect();
     parseUrlParams();
 });
+
+// 页面加载完成后初始化搜索功能
+window.addEventListener('load', initSearch);
 
 // 解析 URL 参数
 function parseUrlParams() {
