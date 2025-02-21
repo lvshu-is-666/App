@@ -37,4 +37,21 @@ function toggleTheme() {
     document.querySelectorAll('.theme-toggle-btn .light-icon, .theme-toggle-btn .dark-icon').forEach(icon => {
         icon.style.display = icon.classList.contains(newTheme + '-icon') ? 'inline' : 'none';
     });
+
+    if(newTheme === 'light')
+    {
+        let colorbg = new Color4Bg.AestheticFluidBg({
+            dom: "box",
+            colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
+            loop: true
+        });
+    }
+    else
+    {
+        let colorbg = new Color4Bg.AestheticFluidBg({
+            dom: "box",
+            colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
+            loop: true
+        });
+    }
 }
