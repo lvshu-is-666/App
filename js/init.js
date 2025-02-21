@@ -160,16 +160,13 @@ function detectDeviceType() {
     console.log(result.os.name);      // 打印操作系统名称
     console.log(result.device.type);  // 打印设备类型
     
-    if (navigator.userAgent.includes('Windows')) {
+    if (result.os.name == 'Windows') {
         return 'windows';
     }
-    if (navigator.userAgent.includes('Mac')) {
-        return 'mac';
-    }
-    if (navigator.userAgent.includes('Android')) {
+    if (result.os.name == 'Android') {
         return 'mobile';
     }
-    if (window.innerWidth <= 768) {
+    if (result.os.name == 'iOS') {
         return 'mobile';
     }
     return 'unknown';
