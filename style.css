@@ -60,7 +60,7 @@
     --card-bg: rgba(255,255,255,0.25);
     --button-bg: linear-gradient(135deg, #666 0%, #555 100%);
     --button-text: #fff;
-    --shadow-primary: 0 5px 20px rgba(255,255,255,0.3);
+    --shadow-primary: 0 4px 20px rgba(255,255,255,0.2);
     --shadow-card: 0 8px 24px rgba(255,255,255,0.2);
     --border-color: rgba(255,255,255,0.2);
     --icon-color: #aaa;
