@@ -60,7 +60,7 @@
     --card-bg: rgba(255,255,255,0.25);
     --button-bg: linear-gradient(135deg, #666 0%, #555 100%);
     --button-text: #fff;
-    --shadow-primary: 0 4px 20px rgba(255,255,255,0.2);
+    --shadow-primary: 0 4px 20px rgba(255,255,255,0.1);
     --shadow-card: 0 8px 24px rgba(255,255,255,0.2);
     --border-color: rgba(255,255,255,0.2);
     --icon-color: #aaa;
@@ -336,7 +336,7 @@ body::before {
     padding: 1.5rem;
     box-shadow: 
         var(--shadow-card),
-        inset 3px 3px 5px rgba(255,255,255,0.3);
+        inset 3px 3px 5px rgba(255,255,255,0.01);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     display: flex;
@@ -353,7 +353,7 @@ body::before {
 
 :root[style*="--current-theme: dark"] .app-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(255,255,255,0.1);
+    box-shadow: 0 12px 32px rgba(255,255,255,0.2);
 }
 
 .app-icon {
