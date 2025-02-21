@@ -68,24 +68,6 @@
     <!-- 在 body 标签底部添加置顶按钮 -->
     <button id="scroll-top-btn" onclick="scrollTop()" aria-label="回到顶部" title="回到顶部"><a href="javascript:window.scrollTo(0,0)"><i class="fa-solid fa-arrow-up"></i></a></button>
     
-    <script>
-        if(((document.documentElement.style.getPropertyValue('--current-theme') || '').trim()) == 'light')
-        {
-            let colorbg = new Color4Bg.AestheticFluidBg({
-            	dom: "box",
-            	colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
-            	loop: true
-            })
-        }
-        else
-        {
-            let colorbg = new Color4Bg.AestheticFluidBg({
-            	dom: "box",
-            	colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
-            	loop: true
-            })
-        }
-    </script>
     <script src="js/utils.js"></script>
     <script src="js/init.js"></script>
     <script src="js/search.js"></script>
