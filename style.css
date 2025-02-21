@@ -78,7 +78,7 @@ html {
 }
 
 body {
-    background: var(--gradient-bg);
+    /*background: var(--gradient-bg);*/
     min-height: 100vh;
     font-family: 'Segoe UI', system-ui, sans-serif;
     line-height: 1.6;
