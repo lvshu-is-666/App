@@ -295,7 +295,8 @@ window.addEventListener('DOMContentLoaded', () => {
             dom: "box",
             colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
             loop: true
-        })
+        });
+    console.log("color4bg");
 });
 
 // 页面加载完成后初始化搜索功能
