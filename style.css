@@ -308,6 +308,26 @@ body::before {
     color: var(--primary-text);
 }
 
+#search-suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+    width: 100%;
+}
+
+#search-suggestions div {
+    padding: 5px;
+    cursor: pointer;
+}
+
+#search-suggestions div:hover {
+    background: #f0f0f0;
+}
+
+/* 应用卡片 */
 .app-card {
     background: var(--gradient-card);
     border-radius: calc(var(--border-radius) - 5px);
