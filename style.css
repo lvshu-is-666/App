@@ -44,7 +44,7 @@
     --gradient-bg: linear-gradient(150deg, #ccffda 0%, #e6ffee 100%);
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.8) 0%, rgba(240,255,244,0.75) 100%);
     --gradient-text: linear-gradient(135deg, #1a5632 0%, #2c3e50 100%);
-    --shadow-primary: 0 4px 20px rgba(46, 204, 113, 0.15);
+    --shadow-primary: 0 5px 20px rgba(46, 204, 113, 0.2);
     --shadow-card: 0 8px 24px rgba(46, 204, 113, 0.1);
     --border-radius: 24px;
 }
@@ -60,8 +60,8 @@
     --card-bg: rgba(255,255,255,0.25);
     --button-bg: linear-gradient(135deg, #666 0%, #555 100%);
     --button-text: #fff;
-    --shadow-primary: rgba(255,255,255,0.3);
-    --shadow-card: rgba(255,255,255,0.2);
+    --shadow-primary: 0 5px 20px rgba(255,255,255,0.3);
+    --shadow-card: 0 8px 24px rgba(255,255,255,0.2);
     --border-color: rgba(255,255,255,0.2);
     --icon-color: #aaa;
 }
