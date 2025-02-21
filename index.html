@@ -20,6 +20,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
     <script>hljs.highlightAll();</script>
     <script src="https://fastly.jsdelivr.net/npm/ua-parser-js/dist/ua-parser.min.js"></script>
+    <script src="AestheticFluidBg.js"></script>
+
+
+			
     <style>
         .icon {
             width: 1em;
@@ -78,5 +82,23 @@
     <script src="js/theme.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/detail.js"></script>
+    <script>
+        if(((document.documentElement.style.getPropertyValue('--current-theme') || '').trim()) == 'light')
+        {
+            let colorbg = new Color4Bg.AestheticFluidBg({
+            	dom: "box",
+            	colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
+            	loop: true
+            })
+        }
+        else
+        {
+            let colorbg = new Color4Bg.AestheticFluidBg({
+            	dom: "box",
+            	colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
+            	loop: true
+            })
+        }
+    </script>
 </body>
 </html>
