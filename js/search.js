@@ -24,3 +24,62 @@ function handleSearch() {
         </div>
     `).join('');
 }
+
+// 显示搜索提示
+function showSuggestions() {
+    const searchInput = document.getElementById('search-input');
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    const suggestionsContainer = document.getElementById('search-suggestions');
+
+    if (searchTerm === '') {
+        suggestionsContainer.innerHTML = '';
+        return;
+    }
+
+    const filteredApps = apps.filter(app => {
+        return app.name.toLowerCase().includes(searchTerm) ||
+            app.brief.toLowerCase().includes(searchTerm) ||
+            app.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+    });
+
+    const suggestions = filteredApps.map(app => `<div onclick="selectSuggestion('${app.name}')">${app.name}</div>`).join('');
+    suggestionsContainer.innerHTML = suggestions;
+}
+
+// 选择搜索提示项
+function selectSuggestion(suggestion) {
+    const searchInput = document.getElementById('search-input');
+    searchInput.value = suggestion;
+    document.getElementById('search-suggestions').innerHTML = '';
+    handleSearch();
+}
+
+// 初始化搜索提示
+function initSearchSuggestions() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', showSuggestions);
+    }
+}
+
+// 初始化搜索功能
+function initSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce2(handleSearch, 300));
+    }
+    initSearchSuggestions();
+}
+
+// 防抖函数
+function debounce2(func, delay) {
+    let timer;
+    return function () {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func.apply(context, args);
+        }, delay);
+    };
+}
