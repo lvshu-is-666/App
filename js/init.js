@@ -57,7 +57,7 @@ const apps = [
         icon: "icon/deepseek.svg",
         description: "details/deepseek.md",
         changelog: "log/deepseek.md",
-        tags: ["人工智能(AI)大模型", "工具"]
+        tags: ["人工智能(AI)", "工具"]
     },
     {
         id: 2002,
@@ -72,7 +72,7 @@ const apps = [
         icon: "icon/文心一言.png",
         description: "details/文心一言.md",
         changelog: "log/文心一言.md",
-        tags: ["人工智能(AI)大模型", "工具"]
+        tags: ["人工智能(AI)", "工具"]
     },
     {
         id: 2003,
@@ -87,7 +87,7 @@ const apps = [
         icon: "icon/Kimi.png",
         description: "details/Kimi.md",
         changelog: "log/Kimi.md",
-        tags: ["人工智能(AI)大模型", "工具"]
+        tags: ["人工智能(AI)", "工具"]
     },
     {
         id: 2004,
@@ -101,7 +101,7 @@ const apps = [
         icon: "https://qbnovel.qq.com/static/353eac8f6c283745f02dddb66e7c6ec4f1c3252f8e6146d4ccd07ffaf70cfddc",
         description: "details/ima.md",
         changelog: "log/ima.md",
-        tags: ["人工智能(AI)大模型", "工具", "办公"]
+        tags: ["人工智能(AI)", "工具", "办公"]
     },
     {
         id: 3001,
@@ -114,7 +114,7 @@ const apps = [
         icon: "icon/rmp.png",
         description: "details/rmp.md",
         changelog: "log/rmp.md",
-        tags: ["工具", "交通"]
+        tags: ["工具", "办公"]
     },
     {
         id: 3002,
@@ -129,7 +129,7 @@ const apps = [
         icon: "icon/geogebra.svg",
         description: "details/geogebra.md",
         changelog: "log/geogebra.md",
-        tags: ["工具", "学习"]
+        tags: ["工具", "教育"]
     },
     {
         id: 3003,
@@ -141,7 +141,50 @@ const apps = [
         icon: "https://www.desmos.com/assets/build/desmos-studio-pbc-IWAXZOF2.png",
         description: "details/desmos.md",
         changelog: "log/desmos.md",
-        tags: ["工具", "学习"]
+        tags: ["工具", "教育"]
+    },
+    {
+        id: 4001,
+        name: "微信",
+        brief: "微信，是一个生活方式",
+        version: "4.0.2 测试",
+        download: {
+            windows: "https://dldir1v6.qq.com/weixin/Universal/Windows/WeChatWin.exe",
+            mobile: "https://weixin.qq.com/"
+        },
+        supportedDevices: ["windows", "mobile"],
+        icon: "icon/Weixin_App.png",
+        description: "details/weixin.md",
+        changelog: "log/weixin.md",
+        tags: ["聊天"]
+    },
+    {
+        id: 4002,
+        name: "QQ",
+        brief: "QQ9-轻松做自己",
+        download: {
+            windows: "https://im.qq.com/pcqq/index.shtml",
+            mobile: "https://im.qq.com/index/#downloadAnchor"
+        },
+        supportedDevices: ["windows", "mobile"],
+        icon: "https://wiki.connect.qq.com/wp-content/uploads/2013/10/03_qq_symbol-1-768x921.png",
+        description: "details/qq.md",
+        changelog: "log/qq.md",
+        tags: ["聊天"]
+    },
+    {
+        id: 4003,
+        name: "WPS Office",
+        brief: "一站式办公服务平台<br>新升级，无广告，AI办公更高效",
+        download: {
+            windows: "https://platform.wps.cn/",
+            mobile: "https://www.wps.cn/"
+        },
+        supportedDevices: ["windows", "mobile"],
+        icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/03/6f/87/036f8724-8220-a1d9-d0a9-a27c673de2af/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-0-0-85-220.png/434x0w.webp",
+        description: "details/wps.md",
+        changelog: "log/wps.md",
+        tags: ["工具", "办公"]
     }
 ];
 
