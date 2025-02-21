@@ -153,7 +153,6 @@ const apps = [
 
 // 检测设备类型
 function detectDeviceType() {
-    const UAParser = require('ua-parser-js');
     const parser = new UAParser();
     const result = parser.getResult();
     
