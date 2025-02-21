@@ -291,6 +291,11 @@ window.addEventListener('DOMContentLoaded', () => {
     initSearch();
     initParticleEffect();
     parseUrlParams();
+    let colorbg = new Color4Bg.AestheticFluidBg({
+            dom: "box",
+            colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
+            loop: true
+        })
 });
 
 // 页面加载完成后初始化搜索功能
