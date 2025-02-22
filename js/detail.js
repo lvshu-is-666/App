@@ -26,6 +26,15 @@ async function loadFile(file) {
     }
 }
 
+function initValine() {
+    new Valine({
+        el: '#vcomments', // 对应的 DOM 元素 ID
+        appId: '88LozTpMAJM48qCYActGsWDe-MdYXbMMI', // 必填，你的 LeanCloud 应用 ID
+        appKey: 'qUgs7yCOWtsQApJ9lkD5Croh', // 必填，你的 LeanCloud 应用 KEY
+        placeholder: '在这里输入你的评论' // 提示信息
+    });
+}
+
 // 显示应用详情页
 async function showDetail(appId) {
     // 记录当前滚动位置
@@ -178,3 +187,5 @@ function copyShareLink(appId) {
             alert('复制失败，请手动复制以下链接：' + shareUrl);
         });
 }
+
+window.addEventListener('load', initValine);
