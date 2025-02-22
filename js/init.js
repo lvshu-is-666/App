@@ -284,15 +284,6 @@ function initTheme() {
     }
 }
 
-function initValine() {
-    new Valine({
-        el: '#vcomments', // 对应的 DOM 元素 ID
-        appId: '88LozTpMAJM48qCYActGsWDe-MdYXbMMI', // 必填，你的 LeanCloud 应用 ID
-        appKey: 'qUgs7yCOWtsQApJ9lkD5Croh', // 必填，你的 LeanCloud 应用 KEY
-        placeholder: '在这里输入你的评论' // 提示信息
-    });
-}
-
 // 启动初始化
 window.addEventListener('DOMContentLoaded', () => {
     initAppList();
@@ -300,8 +291,6 @@ window.addEventListener('DOMContentLoaded', () => {
     initSearch();
     initParticleEffect();
     parseUrlParams();
-    // 初始化 Valine
-    initValine();
 
     const root = document.documentElement;
     const currentTheme = root.style.getPropertyValue('--current-theme') || localStorage.getItem('appTheme');
