@@ -32,7 +32,7 @@ function initValine() {
         appId: '88LozTpMAJM48qCYActGsWDe-MdYXbMMI', // 必填，你的 LeanCloud 应用 ID
         appKey: 'qUgs7yCOWtsQApJ9lkD5Croh', // 必填，你的 LeanCloud 应用 KEY
         placeholder: '在这里输入你的评论', // 提示信息
-        serverURLs: 'https://88LozTpM.api.lncldglobal.com'
+        serverURLs: 'https://88loztpm.api.lncldglobal.com'
     });
 }
 
