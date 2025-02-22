@@ -109,6 +109,12 @@ async function showDetail(appId) {
                 </div>
             </div>
         </div>
+
+        <!-- Valine 评论组件 -->
+        <div class="comment-container">
+            <div id="vcomments"></div>
+        </div>
+
         <div class="back-and-share-container">
             <button class="gradient-back-btn" onclick="showList()"><i class="fa-solid fa-arrow-left"></i>返回列表</button>
             <button class="share-btn" onclick="copyShareLink(${app.id})">
@@ -153,6 +159,18 @@ async function showDetail(appId) {
         img.addEventListener('load', () => {
             img.classList.remove('loading');
         });
+    });
+
+    // 初始化 Valine
+    initValine();
+}
+
+function initValine() {
+    new Valine({
+        el: '#vcomments', // 对应的 DOM 元素 ID
+        appId: '88LozTpMAJM48qCYActGsWDe-MdYXbMMI', // 必填，你的 LeanCloud 应用 ID
+        appKey: 'qUgs7yCOWtsQApJ9lkD5Croh', // 必填，你的 LeanCloud 应用 KEY
+        placeholder: '填写邮箱可接收回复提醒哦 onItemClick ！' // 提示信息
     });
 }
 

@@ -587,6 +587,21 @@ body::before {
     flex: 1;           /* 确保内容区自动占据剩余空间 */
 }
 
+/* 评论区 */
+/* Valine 评论组件样式 */
+.comment-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+}
+
+#vcomments {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* ========== 隐藏不必要的加载图标 ========== */
 .detail-container .loading-description,
 .detail-container .loading-changelog {
