@@ -15,11 +15,13 @@ function handleSearch() {
     
     document.getElementById('app-list').innerHTML = filteredApps.map(app => `
         <div class="app-card" onclick="showDetail(${app.id})">
-            <img src="${app.icon}" class="app-icon" alt="${app.name}图标">
+            <img src="${app.icon}" class="app-icon" alt="${app.name}图标" loading="lazy">
             <div class="app-card-content">
                 <h2>${app.name}</h2>
                 <p class="app-brief">${app.brief}</p>
-                <small>当前版本: ${app.version}</small>
+                ${app.version ? `
+                    <small>当前版本: ${app.version}</small>
+                ` : ''}
             </div>
         </div>
     `).join('');
