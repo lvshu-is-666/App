@@ -132,6 +132,8 @@ async function showDetail(appId) {
         </div>
     </div>`;
 
+    initValine();
+
     try {
         const [descMD, changelogMD] = await Promise.all([
             loadFile(app.description || app.detail),
