@@ -161,17 +161,6 @@ async function showDetail(appId) {
         });
     });
 
-    // 初始化 Valine
-    initValine();
-}
-
-function initValine() {
-    new Valine({
-        el: '#vcomments', // 对应的 DOM 元素 ID
-        appId: '88LozTpMAJM48qCYActGsWDe-MdYXbMMI', // 必填，你的 LeanCloud 应用 ID
-        appKey: 'qUgs7yCOWtsQApJ9lkD5Croh', // 必填，你的 LeanCloud 应用 KEY
-        placeholder: '填写邮箱可接收回复提醒哦 onItemClick ！' // 提示信息
-    });
 }
 
 // 复制分享链接
