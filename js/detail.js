@@ -31,7 +31,7 @@ function initValine() {
         el: '#vcomments', // 对应的 DOM 元素 ID
         appId: '88LozTpMAJM48qCYActGsWDe-MdYXbMMI', // 必填，你的 LeanCloud 应用 ID
         appKey: 'qUgs7yCOWtsQApJ9lkD5Croh', // 必填，你的 LeanCloud 应用 KEY
-        placeholder: '在这里输入你的评论', // 提示信息
+        placeholder: '在这里输入你的评论【注意：现在评论系统暂不支持国内网络，如需使用，请切换至国外网络！】', // 提示信息
         serverURLs: 'https://88loztpm.api.lncldglobal.com'
     });
 }
