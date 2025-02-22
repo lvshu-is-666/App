@@ -16,9 +16,14 @@ function showList() {
 
 // 创建Markdown内容加载器
 async function loadFile(file) {
-    const response = await fetch(file);
-    if (!response.ok) throw new Error('文件加载失败');
-    return await response.text();
+    try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error('文件加载失败');
+        return await response.text();
+    } catch (error) {
+        console.error('加载文件失败:', error);
+        return '';
+    }
 }
 
 // 显示应用详情页

@@ -291,12 +291,28 @@ window.addEventListener('DOMContentLoaded', () => {
     initSearch();
     initParticleEffect();
     parseUrlParams();
-    let colorbg = new Color4Bg.AestheticFluidBg({
-            dom: "box",
-            colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
-            loop: true
+
+    const root = document.documentElement;
+    const currentTheme = root.style.getPropertyValue('--current-theme') || localStorage.getItem('appTheme');
+
+    if(currentTheme == 'light')
+    {
+        let colorbg = new Color4Bg.AestheticFluidBg({
+	    dom: "box",
+	    colors: ["#86DFE9","#A4EFF4","#faffd6","#D6F2C7","#BDEDAD","#AAE0A6"],
+	    loop: true
         });
-    console.log("color4bg");
+    }
+    else
+    {
+        let colorbg = new Color4Bg.AestheticFluidBg({
+	    dom: "box",
+	    colors: ["#0D4405","#35620D","#5C8A03","#2456cc","#bb78c4","#0D4405"],
+	    loop: true
+        });
+    }
+
+    console.log("color4bg initialized:", colorbg);
 });
 
 // 页面加载完成后初始化搜索功能

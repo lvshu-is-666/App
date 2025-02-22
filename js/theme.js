@@ -38,20 +38,20 @@ function toggleTheme() {
         icon.style.display = icon.classList.contains(newTheme + '-icon') ? 'inline' : 'none';
     });
 
-    //if(newTheme === 'light')
-    //{
-    //    let colorbg = new Color4Bg.AestheticFluidBg({
-    //        dom: "box",
-    //        colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
-    //        loop: true
-    //    })
-    //}
-    //else
-    //{
-    //    let colorbg = new Color4Bg.AestheticFluidBg({
-    //        dom: "box",
-    //        colors: ["#86DFE9","#A4EFF4","#FDFFF0","#D6F2C7","#BDEDAD","#AAE0A6"],
-   //         loop: true
-    //    });
-   // }
+    if(newTheme == 'light')
+    {
+        let colorbg = new Color4Bg.AestheticFluidBg({
+	    dom: "box",
+	    colors: ["#86DFE9","#A4EFF4","#faffd6","#D6F2C7","#BDEDAD","#AAE0A6"],
+	    loop: true
+        });	
+    }
+    else
+    {
+        let colorbg = new Color4Bg.AestheticFluidBg({
+	    dom: "box",
+	    colors: ["#0D4405","#35620D","#5C8A03","#2456cc","#bb78c4","#0D4405"],
+	    loop: true
+        });
+    }
 }
