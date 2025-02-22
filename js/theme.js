@@ -41,10 +41,10 @@ function toggleTheme() {
     if(newTheme == 'light')
     {
         let colorbg = new Color4Bg.AestheticFluidBg({
-	    dom: "box",
-	    colors: ["#86DFE9","#A4EFF4","#faffd6","#D6F2C7","#BDEDAD","#AAE0A6"],
-	    loop: true
-        });	
+            dom: "box",
+            colors: ["#86DFE9","#ffc2fa","#faffd6","#c7f2b0","#d1bffd","#a1d29d"],
+            loop: true
+        });
     }
     else
     {
