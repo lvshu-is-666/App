@@ -260,8 +260,8 @@ body::before {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-card);
@@ -270,8 +270,8 @@ body::before {
 }
 
 :root[style*="--current-theme: dark"] .container {
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(4px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -352,7 +352,7 @@ body::before {
     display: flex;
     gap: 1rem;
     align-items: center;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
 }
 
