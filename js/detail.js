@@ -38,6 +38,10 @@ function initValine() {
 
 // 显示应用详情页
 async function showDetail(appId) {
+    // 显示加载状态
+    const container = document.getElementById('app-detail');
+    container.innerHTML = `<div class="loading">正在加载应用详情，请稍后...</div>`;
+    
     try {
         // 原有的显示详情逻辑
     
