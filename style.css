@@ -284,6 +284,11 @@ body::before {
 }
 
 /* 搜索与标签筛选一体框样式 */
+
+/* style.css */
+.highlight {
+    background-color: yellow;
+}
 /* 搜索组件区域 */
 .search-container {
     display: flex;
