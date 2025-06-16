@@ -44,7 +44,10 @@ function showSuggestions() {
             app.tags.some(tag => tag.toLowerCase().includes(searchTerm));
     });
 
-    const suggestions = filteredApps.map(app => `<div onclick="selectSuggestion('${app.name}')">${app.name}</div>`).join('');
+    const suggestions = filteredApps.map(app => {
+        const highlightedName = app.name.replace(new RegExp(searchTerm, 'gi'), match => `<span class="highlight">${match}</span>`);
+        return `<div onclick="selectSuggestion('${app.name}')">${highlightedName}</div>`;
+    }).join('');
     suggestionsContainer.innerHTML = suggestions;
 }
 
