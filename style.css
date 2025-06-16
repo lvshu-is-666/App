@@ -283,6 +283,14 @@ body::before {
     margin-top: 1.5rem;
 }
 
+/* style.css */
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #999;
+}
+
 /* 搜索与标签筛选一体框样式 */
 
 /* style.css */
